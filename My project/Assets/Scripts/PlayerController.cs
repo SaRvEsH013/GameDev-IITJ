@@ -23,11 +23,22 @@ public class PlayerController : MonoBehaviour
         // Handle player input for movement
         if (!enabled) return; // Don't process input if controls are disabled
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        // Get input from the keyboard
 
-        Vector3 movement = new Vector3(horizontal, 0f, vertical) * speed * Time.deltaTime;
-        rb.MovePosition(transform.position + movement);
+        // Get input from the keyboard
+        float xInput = Input.GetAxis("Horizontal");
+        
+        // Move the cube continuously using the horizontal and vertical inputs
+        rb.AddForce(new Vector3(xInput, 0, 0) * speed);
+        //limit the x speed of the cube
+        if (rb.velocity.x > 2f)
+        {
+            rb.velocity = new Vector3(2f, rb.velocity.y, rb.velocity.z);
+        }
+        else if (rb.velocity.x < -2f)
+        {
+            rb.velocity = new Vector3(-2f, rb.velocity.y, rb.velocity.z);
+        }
 
         // Handle jumping only when grounded
         if (isGrounded && Input.GetButtonDown("Jump"))
