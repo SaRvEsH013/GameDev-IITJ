@@ -36,19 +36,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        // Manually apply "upside-down" gravity
-        if(gravityFactor == -1f)
-        {
-            rb.AddForce(2*Vector3.up * Physics.gravity.y * gravityFactor, ForceMode.Acceleration);
-        }
-        else
-        {
-            rb.AddForce(Vector3.up * Physics.gravity.y * gravityFactor, ForceMode.Acceleration);
-        }
-    }
-
     // Check if the player is grounded
     void OnCollisionEnter(Collision collision)
     {
