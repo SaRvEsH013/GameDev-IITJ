@@ -27,15 +27,15 @@ public class PlaneController : MonoBehaviour
 
     private void Update()
     {
-        pitch = Input.GetAxis("Vertical");
-        roll = Input.GetAxis("Horizontal");
+        pitch = Input.GetAxis("Vertical") / 3f;
+        roll = Input.GetAxis("Horizontal") / 4f;
         yaw = Input.GetAxis("Yaw");
 
         if(Input.GetKey(KeyCode.Space))
         {
             throttle += throttleIncrement;
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             throttle -= throttleIncrement;
         }
