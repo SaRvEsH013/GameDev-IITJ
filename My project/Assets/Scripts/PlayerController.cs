@@ -31,19 +31,19 @@ public class PlayerController : MonoBehaviour
         // Move the cube continuously using the horizontal and vertical inputs
         rb.AddForce(new Vector3(xInput, 0, 0) * speed);
         //limit the x speed of the cube
-        if (rb.velocity.x > 2f)
+        if (rb.velocity.x > 1f)
         {
-            rb.velocity = new Vector3(2f, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(1f, rb.velocity.y, rb.velocity.z);
         }
-        else if (rb.velocity.x < -2f)
+        else if (rb.velocity.x < -1f)
         {
-            rb.velocity = new Vector3(-2f, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(-1f, rb.velocity.y, rb.velocity.z);
         }
 
         // Handle jumping only when grounded
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector3.up * jumpForce * gravityFactor, ForceMode.Impulse);
+            rb.AddForce(gravityFactor * jumpForce * Vector3.up, ForceMode.Impulse);
             isGrounded = false; // Set to false when jumping
         }
     }
