@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
         float limitedSpeed = Mathf.Clamp(rb.velocity.x, -1f, 1f);
         rb.velocity = new Vector3(limitedSpeed, rb.velocity.y, rb.velocity.z);
 
+        print(isGrounded + " " + canWallJump);
+
         // Handle jumping when grounded or able to wall jump
         if ((isGrounded || canWallJump) && Input.GetButtonDown("Jump"))
         {
