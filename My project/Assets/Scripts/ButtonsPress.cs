@@ -19,15 +19,15 @@ public class ButtonsPress : MonoBehaviour
         }
 
         //if p1 is in contact with button1, make y pos of button1 to -0.72 smoothly
-        if(p1.transform.position.x >= button1.transform.position.x - 0.2f && p1.transform.position.x <= button1.transform.position.x + 0.2f)
+        if(p1.transform.position.x >= button1.transform.position.x - 0.2f && p1.transform.position.x <= button1.transform.position.x + 0.2f && p1.transform.position.y + 0.35f >= button1.transform.position.y)
         {
             button1.transform.position = Vector3.Lerp(button1.transform.position, new Vector3(button1.transform.position.x, -0.72f, button1.transform.position.z), 2f * Time.deltaTime);
         }
 
         //if p2 is in contact with button2, make y pos of button2 to 1.84 smoothly
-        if (p2.transform.position.x >= button2.transform.position.x - 0.2f && p2.transform.position.x <= button2.transform.position.x + 0.2f)
+        if (p2.transform.position.x >= button2.transform.position.x - 0.2f && p2.transform.position.x <= button2.transform.position.x + 0.2f && p2.transform.position.y <= button2.transform.position.y + 0.35f)
         {
-            button2.transform.position = Vector3.Lerp(button2.transform.position, new Vector3(button2.transform.position.x, 1.84f, button2.transform.position.z), 2f * Time.deltaTime);
+            button2.transform.position = Vector3.Lerp(button2.transform.position, new Vector3(button2.transform.position.x, 1.86f, button2.transform.position.z), 2f * Time.deltaTime); 
         }
     }
 }
