@@ -702,8 +702,8 @@ MonoBehaviour:
   rightRed: {fileID: 484339987}
   wonCanvas: {fileID: 938183428}
   lostCanvas: {fileID: 459994949}
-  maxScore: 5
-  winScore: 2
+  maxScore: 10
+  winScore: 7
 --- !u!1 &275445533
 GameObject:
   m_ObjectHideFlags: 0
