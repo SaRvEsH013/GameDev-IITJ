@@ -27,7 +27,7 @@ public class PlaneController : MonoBehaviour
 
     private void Update()
     {
-        pitch = Input.GetAxis("Vertical") / 3f;
+        pitch = Input.GetAxis("Vertical") / 1f;
         roll = Input.GetAxis("Horizontal") / 4f;
         yaw = Input.GetAxis("Yaw");
 
@@ -47,9 +47,9 @@ public class PlaneController : MonoBehaviour
     {
         rb.AddForce(transform.forward * throttle * maxThrust);
 
-        rb.AddTorque(transform.right * pitch * responseModifier);
+        rb.AddTorque(transform.right * pitch * responseModifier * 3f);
         rb.AddTorque(-transform.forward * roll * responseModifier);
-        rb.AddTorque(transform.up * yaw * responseModifier);
+        rb.AddTorque(transform.up * yaw * responseModifier * 3f);
 
         rb.AddForce(Vector3.up * rb.velocity.magnitude * lift);
     }
