@@ -6,61 +6,54 @@ using UnityEngine;
 
 public class GameScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     public TMPro.TextMeshProUGUI scoreText;
     public GameObject leftGreen, rightGreen, leftRed, rightRed;
+    public GameObject wonCanvas, lostCanvas;
+    public int maxScore = 5;
+    public int winScore = 2;
+    
     int score = 0;
     float tempTime = 0;
     int left;
     int clicked = 0;
-
-    void Blink()
-    {
-        int left = Random.Range(0, 2);
-        if(left == 0)
-        {
-            int green = Random.Range(0, 2);
-            if(green == 0)
-            {
-                leftRed.SetActive(true);
-            }
-            else
-            {
-                leftGreen.SetActive(true);
-            }
-        }
-        else
-        {
-            int green = Random.Range(0, 2);
-            if (green == 0)
-            {
-                rightRed.SetActive(true);
-            }
-            else
-            {
-                rightGreen.SetActive(true);
-            }
-        }
-    }
-
+    int count = 0;
 
     void Start()
     {
-        // set all lights off at start
         leftGreen.SetActive(false);
         rightGreen.SetActive(false);
         leftRed.SetActive(false);
         rightRed.SetActive(false);
+
+        wonCanvas.SetActive(false);
+        lostCanvas.SetActive(false);
+
         score = 0;
         scoreText.text = "Score: " + score.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (count >= maxScore)
+        {
+            leftGreen.SetActive(false);
+            rightGreen.SetActive(false);
+            leftRed.SetActive(false);
+            rightRed.SetActive(false);
+
+            if (score >= winScore)
+            {
+                wonCanvas.SetActive(true);
+            }
+            else
+            {
+                lostCanvas.SetActive(true);
+            }
+            return;
+        }
         tempTime += Time.deltaTime;
 
-        if (tempTime < 1)
+        if (tempTime < 0.7)
         { 
             if (Input.GetKeyDown(KeyCode.LeftArrow) && left == 1 && clicked == 0)
             {
@@ -82,7 +75,7 @@ public class GameScript : MonoBehaviour
             leftRed.SetActive(false);
             rightRed.SetActive(false);
 
-            if (tempTime < 2) return;
+            if (tempTime < 1.05 || count >= maxScore) return;
 
             left = Random.Range(0, 2);
             int green;
@@ -113,6 +106,7 @@ public class GameScript : MonoBehaviour
 
             tempTime = 0;
             clicked = 0;
+            count++;
             
         }
     }
