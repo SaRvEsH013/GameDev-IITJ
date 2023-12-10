@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
     private bool canWallJump;
+    private bool canWall1Jump;
+    private int lastJump = -1;
 
     // Adjust this factor to control how fast the cube falls (opposite gravity)
     public float gravityFactor;
@@ -34,15 +36,33 @@ public class PlayerController : MonoBehaviour
         float limitedSpeed = Mathf.Clamp(rb.velocity.x, -1f, 1f);
         rb.velocity = new Vector3(limitedSpeed, rb.velocity.y, rb.velocity.z);
 
-        print(isGrounded + " " + canWallJump);
-
         // Handle jumping when grounded or able to wall jump
-        if ((isGrounded || canWallJump) && Input.GetButtonDown("Jump"))
+        if ((isGrounded) && Input.GetButtonDown("Jump"))
         {
             Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
             rb.AddForce(gravityFactor * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);
             isGrounded = false; // Set to false when jumping
             canWallJump = false; // Reset wall jump flag
+            canWall1Jump = false; // Reset wall jump flag
+            lastJump = -1;
+        }
+        if((canWallJump) && Input.GetButtonDown("Jump") && lastJump!=0 && gravityFactor==1)
+        {
+            Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
+            rb.AddForce(gravityFactor * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);
+            isGrounded = false; // Set to false when jumping
+            canWallJump = false; // Reset wall jump flag
+            canWall1Jump = false; // Reset wall jump flag
+            lastJump = 0;
+        }
+        if ((canWall1Jump) && Input.GetButtonDown("Jump") && lastJump != 1 && gravityFactor==1)
+        {
+            Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
+            rb.AddForce(gravityFactor * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);
+            isGrounded = false; // Set to false when jumping
+            canWallJump = false; // Reset wall jump flag
+            canWall1Jump = false; // Reset wall jump flag
+            lastJump = 1;
         }
     }
 
@@ -56,6 +76,10 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Wall"))
         {
             canWallJump = true;
+        }
+        else if (collision.gameObject.CompareTag("Wall1"))
+        {
+            canWall1Jump = true;
         }
     }
 
