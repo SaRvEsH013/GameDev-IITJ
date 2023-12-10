@@ -22,7 +22,13 @@ public class ButtonsScript : MonoBehaviour
     public void OnStartClick()
     {
         introCan.SetActive(false);
-        GameCan.SetActive(true);
+        //if Gamecan is not null then set it to active
+        if (GameCan != null)
+        {
+            GameCan.SetActive(true);
+        }
+
+
         eventMan.GetComponent<GameScript>().enabled = true;
     }
 
@@ -36,5 +42,10 @@ public class ButtonsScript : MonoBehaviour
 
         // enable the player
         // find player by tag
+    }
+
+    public void OnStartCubeJump()
+    {
+        introCan.SetActive(false);
     }
 }
