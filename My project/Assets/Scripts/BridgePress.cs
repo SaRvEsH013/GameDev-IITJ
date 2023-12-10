@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BridgePress : MonoBehaviour
 {
+
     public GameObject bridge1;
     public GameObject bridge2;
 
