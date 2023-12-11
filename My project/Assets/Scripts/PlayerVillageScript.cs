@@ -346,20 +346,23 @@ public class PlayerVillageScript : MonoBehaviour
     {
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
         {
+            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
         }
         if (hit.gameObject.tag == "CubeJump" && missions[1] == false)
         {
+            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             SceneManager.LoadScene("Cube Jump", LoadSceneMode.Additive);
         }
         if (hit.gameObject.tag == "Maze" && missions[2] == false)
         {
+            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             SceneManager.LoadScene("Maze", LoadSceneMode.Additive);
         }
         if(hit.gameObject.tag == "FinalStart")

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         // Handle player input for movement
         if (!enabled) return; // Don't process input if controls are disabled
 
-        if(nameOfPlayer == "P2" && Input.GetKeyDown(KeyCode.P))
+        if(nameOfPlayer == "P2" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
         {
             gravityFactor2 *= -1;
         }
@@ -99,5 +99,11 @@ public class PlayerController : MonoBehaviour
     public void DisableControls()
     {
         enabled = false;
+    }
+
+        // Property to check if the player is enabled
+    public bool IsPlayerEnabled
+    {
+        get { return enabled; }
     }
 }
