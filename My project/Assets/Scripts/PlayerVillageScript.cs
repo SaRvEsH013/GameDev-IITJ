@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerVillageScript : MonoBehaviour
 {
+    public Animator animator;
     public bool CanMove { get; private set; } = true;
 
     public bool[] missions = new bool[3];
@@ -95,6 +96,7 @@ public class PlayerVillageScript : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         defaultYPos = playerCamera.transform.localPosition.y;
@@ -132,6 +134,13 @@ public class PlayerVillageScript : MonoBehaviour
     //Los movimientos son identificados
     void Update()
     {
+
+        animator.SetBool("Jump", ShouldJump);
+        animator.SetBool("Run", isMoving);
+        animator.SetBool("Sprint", isSpriting);
+
+        print(ShouldJump);
+
         // check if final start is enabled
         if (!finalStart.activeSelf && missionCount == missions.Length)
         {
