@@ -3104,8 +3104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ec698126b1ef8408ce13a90a853db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 687171743}
-  p2: {fileID: 1607995910}
+  p1: {fileID: 534986641}
+  p2: {fileID: 318623916}
   mainCamera: {fileID: 1704556455}
   switchSpeed: 5
 --- !u!4 &345292497 stripped
