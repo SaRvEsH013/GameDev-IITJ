@@ -542,17 +542,17 @@ PrefabInstance:
     - target: {fileID: 249738465010833259, guid: 4106747b0d2c471479e2170caf8e1b40,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.1
+      value: -16.7
       objectReference: {fileID: 0}
     - target: {fileID: 249738465010833259, guid: 4106747b0d2c471479e2170caf8e1b40,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4
+      value: 21.1
       objectReference: {fileID: 0}
     - target: {fileID: 249738465010833259, guid: 4106747b0d2c471479e2170caf8e1b40,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 73.2
+      value: 44.5
       objectReference: {fileID: 0}
     - target: {fileID: 249738465010833259, guid: 4106747b0d2c471479e2170caf8e1b40,
         type: 3}
@@ -594,6 +594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: island-spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 1386003758213180420, guid: 4106747b0d2c471479e2170caf8e1b40,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c262c90b10ca8734f9c612ad941e1220, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
