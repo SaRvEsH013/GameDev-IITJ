@@ -11,6 +11,11 @@ TagManager:
   - RedGreen
   - CubeJump
   - FinalStart
+  - LostCube
+  - TargetCube
+  - Coin
+  - Floor
+  - Maze
   layers:
   - Default
   - TransparentFX

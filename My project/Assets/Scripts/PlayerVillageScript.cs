@@ -6,7 +6,7 @@ public class PlayerVillageScript : MonoBehaviour
 {
     public bool CanMove { get; private set; } = true;
 
-    public bool[] missions = new bool[2];
+    public bool[] missions = new bool[3];
     public int missionCount = 0;
     public GameObject finalStart;
     public GameObject plane;
@@ -333,22 +333,6 @@ public class PlayerVillageScript : MonoBehaviour
         canSprint = !canSprint;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "RedGreen" && missions[0] == false)
-        {
-            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
-            SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
-        }
-        if (collision.gameObject.tag == "CubeJump" && missions[1] == false)
-        {
-            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
-            SceneManager.LoadScene("CubeJump", LoadSceneMode.Additive);
-        }
-    }
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
@@ -362,6 +346,12 @@ public class PlayerVillageScript : MonoBehaviour
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             SceneManager.LoadScene("Cube Jump", LoadSceneMode.Additive);
+        }
+        if (hit.gameObject.tag == "Maze" && missions[2] == false)
+        {
+            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);
         }
         if(hit.gameObject.tag == "FinalStart")
         {

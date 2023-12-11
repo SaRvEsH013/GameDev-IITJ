@@ -8,6 +8,8 @@ public class ButtonsScript : MonoBehaviour
     public GameObject eventMan;
     public GameObject introCan;
     public GameObject GameCan;
+
+    public GameObject ball;
     void Start()
     {
         
@@ -58,5 +60,20 @@ public class ButtonsScript : MonoBehaviour
         player.GetComponent<PlayerVillageScript>().missions[1] = true;
         player.GetComponent<PlayerVillageScript>().missionCount += 1;
         SceneManager.UnloadSceneAsync("Cube Jump");
+    }
+
+    public void onStartMaze()
+    {
+        introCan.SetActive(false);
+        ball.SetActive(true);
+    }
+
+    public void onContinueMaze()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<PlayerVillageScript>().missions[2] = true;
+        player.GetComponent<PlayerVillageScript>().missionCount += 1;
+        SceneManager.UnloadSceneAsync("Maze");
     }
 }
