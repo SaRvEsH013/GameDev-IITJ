@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Wall1
   - Runway
+  - RedGreen
+  - CubeJump
+  - FinalStart
   layers:
   - Default
   - TransparentFX

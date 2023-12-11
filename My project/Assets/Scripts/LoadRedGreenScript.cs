@@ -17,16 +17,4 @@ public class LoadRedGreenScript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        other.transform.position = new Vector3(other.transform.position.x, transform.position.y, transform.position.z + 2);
-
-        // load the red/green scene and save the current scene
-        SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
-
-        // disbale the player unitl the red/green scene is done
-        other.gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-
-
-    }
 }

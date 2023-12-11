@@ -1,10 +1,15 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerVillageScript : MonoBehaviour
 {
     public bool CanMove { get; private set; } = true;
+
+    public bool[] missions = new bool[2];
+    public int missionCount = 0;
+    public GameObject finalStart;
+    public GameObject plane;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
@@ -93,10 +98,17 @@ public class PlayerVillageScript : MonoBehaviour
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         defaultYPos = playerCamera.transform.localPosition.y;
+        
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
         audioSource = GetComponent<AudioSource>();
+
+        // set missions to false
+        for (int i = 0; i < missions.Length; i++)
+        {
+            missions[i] = false;
+        }                                                   
 
     }
 
@@ -120,6 +132,12 @@ public class PlayerVillageScript : MonoBehaviour
     //Los movimientos son identificados
     void Update()
     {
+        // check if final start is enabled
+        if (!finalStart.activeSelf && missionCount == missions.Length)
+        {
+            finalStart.SetActive(true);
+        }        
+        
         if (CanMove)
         {
             HandleMovementInput();
@@ -313,6 +331,43 @@ public class PlayerVillageScript : MonoBehaviour
         duringCrouchAnimation = false;
         canJump = !canJump;
         canSprint = !canSprint;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "RedGreen" && missions[0] == false)
+        {
+            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+            SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
+        }
+        if (collision.gameObject.tag == "CubeJump" && missions[1] == false)
+        {
+            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+            SceneManager.LoadScene("CubeJump", LoadSceneMode.Additive);
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
+        {
+            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
+        }
+        if (hit.gameObject.tag == "CubeJump" && missions[1] == false)
+        {
+            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
+            SceneManager.LoadScene("Cube Jump", LoadSceneMode.Additive);
+        }
+        if(hit.gameObject.tag == "FinalStart")
+        {
+            plane.gameObject.SetActive(true);
+            this.enabled = false;
+        }
     }
 
 }

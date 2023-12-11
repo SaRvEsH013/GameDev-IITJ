@@ -38,6 +38,8 @@ public class ButtonsScript : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<PlayerVillageScript>().missions[0] = true;
+        player.GetComponent<PlayerVillageScript>().missionCount += 1;
         SceneManager.UnloadSceneAsync("RedGreenTestScene");
 
         // enable the player
@@ -47,5 +49,14 @@ public class ButtonsScript : MonoBehaviour
     public void OnStartCubeJump()
     {
         introCan.SetActive(false);
+    }
+
+    public void onContinueCubeJump()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<PlayerVillageScript>().missions[1] = true;
+        player.GetComponent<PlayerVillageScript>().missionCount += 1;
+        SceneManager.UnloadSceneAsync("Cube Jump");
     }
 }
