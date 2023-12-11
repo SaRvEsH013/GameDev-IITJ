@@ -11,13 +11,14 @@ public class PlayerController : MonoBehaviour
     private bool canWallJump;
     private bool canWall1Jump;
     private int lastJump = -1;
-
+    public Animator animator;
     // Adjust this factor to control how fast the cube falls (opposite gravity)
     public float gravityFactor2;
     private string nameOfPlayer;
 
     void Start()
     {
+        animator= GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         EnableControls(); // Enable controls by default
         nameOfPlayer = gameObject.name;
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
         // Get input from the keyboard
         float xInput = Input.GetAxis("Horizontal");
 
+        animator.SetFloat("speed", xInput );
+        print(xInput);
         // Move the cube continuously using the horizontal input
         rb.AddForce(new Vector3(xInput, 0, 0) * speed);
 
