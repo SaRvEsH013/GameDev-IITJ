@@ -16,7 +16,7 @@ public class CubeController : MonoBehaviour
             //check if intro screen is active
             if (!introScreen.activeSelf && !lostScreen.activeSelf && !wonScreen.activeSelf)
             {
-                cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, moveSpeed);
+                cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, -1f*moveSpeed);
             }
         }
     }
