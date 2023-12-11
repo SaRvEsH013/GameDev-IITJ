@@ -95,13 +95,11 @@ public class GameScript : MonoBehaviour
                 {
                     leftRed.SetActive(true);
                     red_explosion_left.SetActive(true);
-
                 }
                 else
                 {
                     rightGreen.SetActive(true);
                     green_explosion_right.SetActive(true);
-
                 }
             }
             else
@@ -121,11 +119,6 @@ public class GameScript : MonoBehaviour
                 }
             }
             PlayAudio();
-            green_explosion_left.SetActive(false);
-            green_explosion_right.SetActive(false);
-            red_explosion_right.SetActive(false);
-            red_explosion_left.SetActive(false);
-
             tempTime = 0;
             clicked = 0;
             count++;
