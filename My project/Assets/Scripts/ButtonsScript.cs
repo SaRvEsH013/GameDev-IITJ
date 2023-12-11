@@ -40,12 +40,21 @@ public class ButtonsScript : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         player.GetComponent<PlayerVillageScript>().missions[0] = true;
         player.GetComponent<PlayerVillageScript>().missionCount += 1;
         SceneManager.UnloadSceneAsync("RedGreenTestScene");
 
         // enable the player
         // find player by tag
+    }
+
+    public void onBackClick()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        SceneManager.UnloadSceneAsync("RedGreenTestScene");
     }
 
     public void OnStartCubeJump()
@@ -62,6 +71,14 @@ public class ButtonsScript : MonoBehaviour
         SceneManager.UnloadSceneAsync("Cube Jump");
     }
 
+    public void onBackCubeJump()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        player.GetComponent<PlayerVillageScript>().enabled = true;
+        SceneManager.UnloadSceneAsync("Cube Jump");
+    }
+
     public void onStartMaze()
     {
         introCan.SetActive(false);
@@ -72,8 +89,17 @@ public class ButtonsScript : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         player.GetComponent<PlayerVillageScript>().missions[2] = true;
         player.GetComponent<PlayerVillageScript>().missionCount += 1;
+        SceneManager.UnloadSceneAsync("Maze");
+    }
+
+    public void onBackMaze()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerVillageScript>().enabled = true;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         SceneManager.UnloadSceneAsync("Maze");
     }
 }

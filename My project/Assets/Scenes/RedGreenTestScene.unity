@@ -700,10 +700,15 @@ MonoBehaviour:
   rightGreen: {fileID: 221735262}
   leftRed: {fileID: 493107018}
   rightRed: {fileID: 484339987}
+  green_explosion_left: {fileID: 1348888488}
+  green_explosion_right: {fileID: 221735262}
+  red_explosion_left: {fileID: 493107018}
+  red_explosion_right: {fileID: 484339987}
   wonCanvas: {fileID: 938183428}
   lostCanvas: {fileID: 459994949}
   maxScore: 10
   winScore: 7
+  audioClip: {fileID: 0}
 --- !u!1 &275445533
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +862,7 @@ MonoBehaviour:
   eventMan: {fileID: 264779661}
   introCan: {fileID: 113573432}
   GameCan: {fileID: 665255102}
+  ball: {fileID: 0}
 --- !u!1 &385179394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1583358304}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 275445539}
+        m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
+        m_MethodName: onBackClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &671250562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1905,7 +1923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 907472745}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 275445539}
+        m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
+        m_MethodName: onBackClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &907472745
 MonoBehaviour:
   m_ObjectHideFlags: 0
