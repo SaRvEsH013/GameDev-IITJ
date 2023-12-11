@@ -133,9 +133,8 @@ public class PlayerVillageScript : MonoBehaviour
     void Update()
     {
         
-        animator.SetBool("Jump", ShouldJump);
-        animator.SetBool("Run", isMoving);
-        animator.SetBool("Sprint", isSpriting);
+        
+
         print(ShouldJump);
         // check if final start is enabled
         if (!finalStart.activeSelf && missionCount == missions.Length)
