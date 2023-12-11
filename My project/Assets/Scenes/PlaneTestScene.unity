@@ -537,6 +537,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPlane: {fileID: 1838933369}
+  planeController: {fileID: 1814250191}
+--- !u!114 &1814250191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2778563357199926722, guid: eb1c75443ce8fce46864dd463a4bad48,
+    type: 3}
+  m_PrefabInstance: {fileID: 334171810090281897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814250180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e7572c79fc96e4184d70b574d7fd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1838933369 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312,

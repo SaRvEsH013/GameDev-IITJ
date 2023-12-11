@@ -5,6 +5,7 @@ using UnityEngine;
 public class for_explosion : MonoBehaviour
 {
     [SerializeField] private GameObject explosionPlane;
+    [SerializeField] private MonoBehaviour planeController;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class for_explosion : MonoBehaviour
         if (!explosionPlane.activeSelf)
         {
             explosionPlane.SetActive(true);
+            planeController.enabled = false; // Deactivate the plane controller script
         }
     }
 }
