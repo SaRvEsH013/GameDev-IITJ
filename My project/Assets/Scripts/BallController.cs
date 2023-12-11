@@ -5,9 +5,11 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public float speed = 10f;
-
     public GameObject wonCan;
     public GameObject lostCan;
+
+    private bool isMoving = false;
+    private Vector3 curVel = Vector3.zero;
         
     void Start()
     {
@@ -17,15 +19,23 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get input from vercal axis and horizontal axis
+        // move with curr velocity
+        transform.position += curVel * Time.deltaTime;
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        // move the ball continuously in the direction of the input
-        if(x != 0 || z != 0)
+        print(curVel);
+
+        if (x != 0)
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(x * speed, 0, z * speed);
+            curVel = new Vector3(x, 0, 0) * speed;
         }
+        else if (z != 0)
+        {
+            curVel = new Vector3(0, 0, z) * speed;
+        }
+
 
     }
 
