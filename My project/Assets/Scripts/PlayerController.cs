@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         // Handle player input for movement
         if (!enabled) return; // Don't process input if controls are disabled
 
-        if(nameOfPlayer == "P2" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
+        if(nameOfPlayer == "DefaultMalePBR" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
         {
             gravityFactor2 *= -1;
         }
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             canWall1Jump = false; // Reset wall jump flag
             lastJump = -1;
         }
-        if((canWallJump) && Input.GetButtonDown("Jump") && lastJump!=0 && nameOfPlayer=="P1")
+        if((canWallJump) && Input.GetButtonDown("Jump") && lastJump!=0 && nameOfPlayer== "DefaultFemalePBR")
         {
             Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
             rb.AddForce(gravityFactor2 * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             canWall1Jump = false; // Reset wall jump flag
             lastJump = 0;
         }
-        if ((canWall1Jump) && Input.GetButtonDown("Jump") && lastJump != 1 && nameOfPlayer == "P1")
+        if ((canWall1Jump) && Input.GetButtonDown("Jump") && lastJump != 1 && nameOfPlayer == "DefaultFemalePBR")
         {
             Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
             rb.AddForce(gravityFactor2 * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);

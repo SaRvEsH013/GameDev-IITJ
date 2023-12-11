@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 718421507}
-  p1: {fileID: 687171743}
+  p1: {fileID: 1365836962}
   button1: {fileID: 164493689}
 --- !u!65 &164493691
 BoxCollider:
@@ -7069,7 +7069,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.11, y: 2.39, z: 0.27}
-  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
+  m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -7437,32 +7437,32 @@ PrefabInstance:
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.33
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.33
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.33
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.53
+      value: -39.7
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.09
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.302
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
@@ -7592,8 +7592,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityFactor: -1
-  allowReversal: 0
-  playerController: {fileID: 0}
+  allowReversal: 1
+  playerController: {fileID: 725009697}
 --- !u!114 &725009697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7606,11 +7606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc0e19fab4991b48b01c99be8907542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  jumpForce: 4
+  speed: 10
+  jumpForce: 3.9
   wallJumpForce: 5
   animator: {fileID: 725009698}
-  gravityFactor2: 0
+  gravityFactor2: -1
 --- !u!95 &725009698 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 85870148452666392, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
@@ -8981,8 +8981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51996d71c2209e408c4fab05b473735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 687171743}
-  p2: {fileID: 1607995910}
+  p1: {fileID: 1365836962}
+  p2: {fileID: 725009693}
   button1: {fileID: 83996120}
   button2: {fileID: 1245559332}
 --- !u!4 &904856848
@@ -10974,7 +10974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 94527741}
-  p2: {fileID: 1607995910}
+  p2: {fileID: 725009693}
   button2: {fileID: 1204919867}
 --- !u!65 &1204919870
 BoxCollider:
@@ -12588,27 +12588,27 @@ PrefabInstance:
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.11
+      value: -39.68
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
@@ -12725,11 +12725,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc0e19fab4991b48b01c99be8907542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  jumpForce: 4
+  speed: 10
+  jumpForce: 3.9
   wallJumpForce: 5
   animator: {fileID: 1365836966}
-  gravityFactor2: 0
+  gravityFactor2: 1
 --- !u!114 &1365836965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12744,7 +12744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityFactor: 1
   allowReversal: 0
-  playerController: {fileID: 0}
+  playerController: {fileID: 725009697}
 --- !u!95 &1365836966 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8117583199093232115, guid: f0aa068246263dd4ba7a61b712d2c765,
@@ -16400,7 +16400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bridge1: {fileID: 1577374479}
   bridge2: {fileID: 245837694}
-  p2: {fileID: 1607995910}
+  p2: {fileID: 725009693}
   button: {fileID: 293129500}
 --- !u!4 &1749271526
 Transform:
@@ -19752,8 +19752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b84c4a381198543b067d3fe851931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 687171743}
-  p2: {fileID: 1607995910}
+  p1: {fileID: 1365836962}
+  p2: {fileID: 725009693}
   obstacle1: {fileID: 1568837643}
   obstacle2: {fileID: 828924422}
 --- !u!4 &2117748256
@@ -19970,8 +19970,6 @@ SceneRoots:
   - {fileID: 2037940804}
   - {fileID: 327406740}
   - {fileID: 1145359087}
-  - {fileID: 687171747}
-  - {fileID: 1607995914}
   - {fileID: 1509889136}
   - {fileID: 2117748256}
   - {fileID: 904856848}
@@ -19982,7 +19980,9 @@ SceneRoots:
   - {fileID: 1204919873}
   - {fileID: 1615463631}
   - {fileID: 94527742}
+  - {fileID: 1607995914}
   - {fileID: 725009692}
+  - {fileID: 687171747}
   - {fileID: 1365836961}
   - {fileID: 1671076577}
   - {fileID: 653911449}
