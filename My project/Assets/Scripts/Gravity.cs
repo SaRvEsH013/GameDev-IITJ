@@ -7,6 +7,7 @@ public class Gravity : MonoBehaviour
     private Rigidbody rb;
     public float gravityFactor;
     public bool allowReversal;
+    public PlayerController playerController;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class Gravity : MonoBehaviour
 
     private void Update()
     {
-        if (allowReversal && Input.GetKeyDown(KeyCode.P))
+        if (allowReversal && Input.GetKeyDown(KeyCode.P) && playerController.IsPlayerEnabled)
         {
             //check if grounded
             if(rb.velocity.y < 0.01 && rb.velocity.y > -0.1)

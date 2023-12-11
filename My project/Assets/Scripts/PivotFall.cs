@@ -21,6 +21,6 @@ public class PivotFall : MonoBehaviour
     IEnumerator WaitAndRotate()
     {
         yield return new WaitForSeconds(1f);
-        pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 22.2f), 1f * Time.deltaTime);
+        pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 25.2f), 1f * Time.deltaTime);
     }
 }
