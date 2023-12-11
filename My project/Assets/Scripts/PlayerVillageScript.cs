@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerVillageScript : MonoBehaviour
 {
     public bool CanMove { get; private set; } = true;
-
+    public Animator animator;
     public bool[] missions = new bool[2];
     public int missionCount = 0;
     public GameObject finalStart;
@@ -101,7 +101,7 @@ public class PlayerVillageScript : MonoBehaviour
         
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
         // set missions to false
@@ -132,6 +132,11 @@ public class PlayerVillageScript : MonoBehaviour
     //Los movimientos son identificados
     void Update()
     {
+        
+        animator.SetBool("Jump", ShouldJump);
+        animator.SetBool("Run", isMoving);
+        animator.SetBool("Sprint", isSpriting);
+        print(ShouldJump);
         // check if final start is enabled
         if (!finalStart.activeSelf && missionCount == missions.Length)
         {
@@ -162,6 +167,7 @@ public class PlayerVillageScript : MonoBehaviour
         //Condiciones para los sonidos de pasos(footsteps objects)
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
 
         if (horizontal != 0 || vertical != 0 && characterController.isGrounded)
         {
@@ -262,6 +268,7 @@ public class PlayerVillageScript : MonoBehaviour
     //Si saltamos
     private void HandleJump()
     {
+
         if (ShouldJump)
             moveDirection.y = jumpForce;
     }

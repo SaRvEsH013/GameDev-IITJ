@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
     public float speed = 20f;
     public float jumpForce = 4f;
     public float wallJumpForce = 5f; // Adjust the force for jumping off walls
+
+
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = gameObject.GetComponent<Animator>();
         EnableControls(); // Enable controls by default
     }
 
@@ -28,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
         // Get input from the keyboard
         float xInput = Input.GetAxis("Horizontal");
+
+        animator.SetFloat("Speed", Mathf.Abs(xInput));
+
 
         // Move the cube continuously using the horizontal input
         rb.AddForce(new Vector3(xInput, 0, 0) * speed);
