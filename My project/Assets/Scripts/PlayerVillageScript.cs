@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class PlayerVillageScript : MonoBehaviour
 {
     public Animator animator;
+    public PlayableDirector Director;
     public bool CanMove { get; private set; } = true;
 
     public bool[] missions = new bool[3];
@@ -58,7 +61,7 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField] private float crouchBobAmount = 0.025f;
     private float defaultYPos = 0;
     private float timer;
-
+    
     //private Vector3 hitPointNormal;
     private Camera playerCamera;
     private CharacterController characterController;
@@ -95,6 +98,7 @@ public class PlayerVillageScript : MonoBehaviour
 
     void Awake()
     {
+        Director = GetComponent<PlayableDirector>();
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
@@ -102,7 +106,7 @@ public class PlayerVillageScript : MonoBehaviour
         
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-
+        //Director.SetActive(false);
         audioSource = GetComponent<AudioSource>();
 
         // set missions to false
