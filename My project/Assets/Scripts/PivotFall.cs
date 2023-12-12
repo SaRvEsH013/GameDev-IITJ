@@ -8,19 +8,14 @@ public class PivotFall : MonoBehaviour
     public GameObject p2;
     public GameObject button2;
 
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (p2.transform.position.x >= button2.transform.position.x - 0.2f && p2.transform.position.x <= button2.transform.position.x + 0.2f && p2.transform.position.y <= button2.transform.position.y + 0.35f)
+        if (collision.gameObject.name == "DefaultMalePBR")
         {
             button2.transform.position = Vector3.Lerp(button2.transform.position, new Vector3(button2.transform.position.x, button2.transform.position.y - 0.1f, button2.transform.position.z), 1f * Time.deltaTime);
-            //wait 1 second and then rotate pivot 22 positive z degrees smoothly
-            StartCoroutine(WaitAndRotate());
+            _ = new WaitForSeconds(1f);
+            //call function to rotate pivot 22 degrees on z axis smoothly
+            pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 22), 1f * Time.deltaTime);
         }
-    }
-
-    IEnumerator WaitAndRotate()
-    {
-        yield return new WaitForSeconds(1f);
-        pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, Quaternion.Euler(0, 0, 25.2f), 1f * Time.deltaTime);
     }
 }

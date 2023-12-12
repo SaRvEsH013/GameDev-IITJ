@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -87,12 +87,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void onContinueMaze()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        player.GetComponent<PlayerVillageScript>().missions[2] = true;
-        player.GetComponent<PlayerVillageScript>().missionCount += 1;
-        SceneManager.UnloadSceneAsync("Maze");
+        SceneManager.LoadScene("Office_Scene");
     }
 
     public void onBackMaze()

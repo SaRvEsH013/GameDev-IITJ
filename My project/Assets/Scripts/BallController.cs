@@ -47,10 +47,10 @@ public class BallController : MonoBehaviour
             wonCan.SetActive(true);
 
         }
-        else if(collision.gameObject.tag != "TargetCube")
-        {
-            lostCan.SetActive(true);
+        //else if(collision.gameObject.tag != "TargetCube")
+        //{
+        //    lostCan.SetActive(true);
 
-        }
+        //}
     }
 }
