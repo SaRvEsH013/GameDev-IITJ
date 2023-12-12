@@ -13,7 +13,7 @@ public class PlaneController : MonoBehaviour
     private float pitch;
     private float roll;
     private float yaw;
-
+    public Animator animator;
     private Rigidbody rb;
     private float responseModifier
     {
@@ -22,6 +22,7 @@ public class PlaneController : MonoBehaviour
 
     private void Awake()
     {
+        GetComponent<Animator>().enabled = false;
         rb = GetComponent<Rigidbody>();
     }
 
