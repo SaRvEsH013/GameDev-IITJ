@@ -51,10 +51,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void onBackClick()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        SceneManager.UnloadSceneAsync("RedGreenTestScene");
+        SceneManager.LoadScene("Office_Scene");
     }
 
     public void OnStartCubeJump()
