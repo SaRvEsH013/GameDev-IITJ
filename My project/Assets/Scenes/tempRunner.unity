@@ -13075,7 +13075,7 @@ PrefabInstance:
     - target: {fileID: 2665666896538174591, guid: 29802c80c8292614c94746440391437c,
         type: 3}
       propertyPath: m_Name
-      value: plane-passenger (1) Variant
+      value: animation_for_planelanding
       objectReference: {fileID: 0}
     - target: {fileID: 3125760248078126864, guid: 29802c80c8292614c94746440391437c,
         type: 3}
@@ -20029,7 +20029,7 @@ GameObject:
   - component: {fileID: 1678607623}
   - component: {fileID: 1678607622}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_for_planelanding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
