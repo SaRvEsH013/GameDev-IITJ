@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,13 +12,13 @@ public class ButtonsScript : MonoBehaviour
     public GameObject ball;
     void Start()
     {
-        
+
     }
 
 
     void Update()
     {
-        
+
     }
 
     public void OnStartClick()
@@ -36,22 +36,14 @@ public class ButtonsScript : MonoBehaviour
 
     public void OnContinueClick()
     {
-        // unload current scene async
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        player.GetComponent<PlayerVillageScript>().missions[0] = true;
-        player.GetComponent<PlayerVillageScript>().missionCount += 1;
-        SceneManager.UnloadSceneAsync("RedGreenTestScene");
+        // fly plane  and man enters volcano animation and load cube jump scene
 
-        // enable the player
-        // find player by tag
     }
 
     public void onBackClick()
     {
-        SceneManager.LoadScene("Office_Scene");
+        SceneManager.LoadScene("RedGreenTestScene");
     }
 
     public void OnStartCubeJump()
@@ -61,19 +53,12 @@ public class ButtonsScript : MonoBehaviour
 
     public void onContinueCubeJump()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        player.GetComponent<PlayerVillageScript>().missions[1] = true;
-        player.GetComponent<PlayerVillageScript>().missionCount += 1;
-        SceneManager.UnloadSceneAsync("Cube Jump");
+        SceneManager.LoadScene("tempRunner");
     }
 
     public void onBackCubeJump()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        SceneManager.UnloadSceneAsync("Cube Jump");
+        SceneManager.LoadScene("Cube Jump");
     }
 
     public void onStartMaze()
@@ -84,7 +69,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void onContinueMaze()
     {
-        SceneManager.LoadScene("Office_Scene");
+        //load plane initial animation and then load red green test scene
     }
 
     public void onBackMaze()
