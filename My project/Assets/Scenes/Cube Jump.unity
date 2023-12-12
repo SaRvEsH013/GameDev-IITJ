@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 167185211}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -937,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSound: {fileID: 8300000, guid: 758f3ce7cc1ea5a47bbc6627c2a3045e, type: 3}
+  cubeController: {fileID: 1066712609}
 --- !u!82 &263074761
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1707,7 +1708,7 @@ GameObject:
   - component: {fileID: 916052076}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2269,6 +2270,7 @@ MonoBehaviour:
   wonScreen: {fileID: 115402485}
   lostScreen: {fileID: 941901058}
   cube: {fileID: 1066712603}
+  isGrounded: 0
   moveSpeed: 180
 --- !u!1 &1108334703
 GameObject:
@@ -2285,7 +2287,7 @@ GameObject:
   - component: {fileID: 1108334709}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2418,7 +2420,7 @@ GameObject:
   - component: {fileID: 1145289789}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3219,7 +3221,7 @@ GameObject:
   - component: {fileID: 1469493242}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
