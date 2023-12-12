@@ -16,6 +16,9 @@ TagManager:
   - Coin
   - Floor
   - Maze
+  - FxTemporaire
+  - Door
+  - Begin
   layers:
   - Default
   - TransparentFX

@@ -289,6 +289,11 @@ public class PlayerVillageScript : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if(hit.gameObject.tag == "Begin")
+        {
+            SceneManager.LoadScene("Office_Scene");
+        }
+
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
         {
             if (SceneManager.GetSceneByName("RedGreenTestScene").isLoaded) return;
