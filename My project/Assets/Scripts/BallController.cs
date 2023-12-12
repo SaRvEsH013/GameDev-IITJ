@@ -1,3 +1,4 @@
+using GLTF.Schema;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,11 @@ public class BallController : MonoBehaviour
         if(collision.gameObject.tag == "TargetCube")
         {
             wonCan.SetActive(true);
+
+        }
+        else if(collision.gameObject.tag != "TargetCube")
+        {
+            lostCan.SetActive(true);
 
         }
     }
