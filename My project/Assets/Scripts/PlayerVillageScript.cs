@@ -292,6 +292,7 @@ public class PlayerVillageScript : MonoBehaviour
     {
         if (hit.gameObject.tag == "Begin")
         {
+            StartCoroutine(Fade(false));
             SceneManager.LoadScene("Office_Scene");
         }
 
@@ -299,6 +300,7 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("RedGreenTestScene").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
@@ -309,6 +311,7 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("Cube Jump").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
@@ -319,6 +322,7 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("Maze").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
