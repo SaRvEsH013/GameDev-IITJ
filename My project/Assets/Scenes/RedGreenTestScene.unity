@@ -951,6 +951,7 @@ MonoBehaviour:
   eventMan: {fileID: 264779661}
   introCan: {fileID: 113573432}
   GameCan: {fileID: 665255102}
+  ball: {fileID: 0}
 --- !u!1001 &312864299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2329,7 +2330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 411.9, y: 25}
+  m_AnchoredPosition: {x: 323, y: 25}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &929126108

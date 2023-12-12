@@ -127,6 +127,6 @@ public class GameScript : MonoBehaviour
     }
     void PlayAudio()
     {
-        //AudioSource.PlayClipAtPoint(audioClip, transform.position);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
     }
 }

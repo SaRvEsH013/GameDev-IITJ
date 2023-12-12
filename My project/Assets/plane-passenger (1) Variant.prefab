@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1004195809067682514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2959365438557343405, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_Name
+      value: plane-passenger (1) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838062841862288686, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 288
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -210.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630424685490177333, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2959365438557343405, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3119339479793879681}
+    - targetCorrespondingSourceObject: {fileID: 2959365438557343405, guid: eb1c75443ce8fce46864dd463a4bad48,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5436160457030442703}
+  m_SourcePrefab: {fileID: 100100000, guid: eb1c75443ce8fce46864dd463a4bad48, type: 3}
+--- !u!1 &2665666896538174591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2959365438557343405, guid: eb1c75443ce8fce46864dd463a4bad48,
+    type: 3}
+  m_PrefabInstance: {fileID: 1004195809067682514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3119339479793879681
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665666896538174591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4df449008a1e96a468b8cbba7afec6cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5436160457030442703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665666896538174591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76ec9d3178da084ea3a5fd078ebcd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPlane: {fileID: 0}
+  planeController: {fileID: 3125760248078126864}
+--- !u!114 &3125760248078126864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2778563357199926722, guid: eb1c75443ce8fce46864dd463a4bad48,
+    type: 3}
+  m_PrefabInstance: {fileID: 1004195809067682514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665666896538174591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e7572c79fc96e4184d70b574d7fd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
