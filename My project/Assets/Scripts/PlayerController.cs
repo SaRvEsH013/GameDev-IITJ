@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
 
         animator.SetFloat("speed", xInput );
-        print(xInput);
+        //print(xInput);
         // Move the cube continuously using the horizontal input
         rb.AddForce(new Vector3(xInput, 0, 0) * speed);
 
