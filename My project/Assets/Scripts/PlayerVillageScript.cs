@@ -1,15 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class PlayerVillageScript : MonoBehaviour
 {
     public Animator animator;
+    public PlayableDirector Director;
     public bool CanMove { get; private set; } = true;
 
     public bool[] missions = new bool[3];
     public int missionCount = 0;
-    public GameObject finalStart;
     public GameObject plane;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
@@ -59,7 +61,7 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField] private float crouchBobAmount = 0.025f;
     private float defaultYPos = 0;
     private float timer;
-
+    
     //private Vector3 hitPointNormal;
     private Camera playerCamera;
     private CharacterController characterController;
@@ -96,6 +98,7 @@ public class PlayerVillageScript : MonoBehaviour
 
     void Awake()
     {
+        Director = GetComponent<PlayableDirector>();
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
@@ -103,7 +106,7 @@ public class PlayerVillageScript : MonoBehaviour
         
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-
+        //Director.SetActive(false);
         audioSource = GetComponent<AudioSource>();
 
         // set missions to false
@@ -138,15 +141,7 @@ public class PlayerVillageScript : MonoBehaviour
         animator.SetBool("Jump", ShouldJump);
         animator.SetBool("Run", isMoving);
         animator.SetBool("Sprint", isSpriting);
-
-        print(ShouldJump);
-
-        // check if final start is enabled
-        if (!finalStart.activeSelf && missionCount == missions.Length)
-        {
-            finalStart.SetActive(true);
-        }        
-        
+                
         if (CanMove)
         {
             HandleMovementInput();
@@ -156,16 +151,12 @@ public class PlayerVillageScript : MonoBehaviour
             if (canJump)
                 HandleJump();
 
-            if (canCrouch)
-                //HandleCrouch();
-
             if (canUseHeadbob)
                 HandleHeadbob();
 
             ApplyFinalMovements();
 
         }
-        //Llamada al Salto
         PlaySoundFalling();
 
         //Condiciones para los sonidos de pasos(footsteps objects)
@@ -268,21 +259,12 @@ public class PlayerVillageScript : MonoBehaviour
 
     }
 
-    //Si saltamos
     private void HandleJump()
     {
         if (ShouldJump)
             moveDirection.y = jumpForce;
     }
 
-    //Si nos agachamos
-    private void HandleCrouch()
-    {
-        if (ShouldCrouch)
-            StartCoroutine(CrouchStand());
-    }
-
-    //Movimiento de la cabeza(cámara) dependiendo de nuestro estado
     private void HandleHeadbob()
     {
         if (!characterController.isGrounded) return;
@@ -297,7 +279,6 @@ public class PlayerVillageScript : MonoBehaviour
         }
     }
 
-    //Movimiento y gravedad incluyendo si nuestro jugador esta o no esta pisando
     private void ApplyFinalMovements()
     {
 
@@ -306,64 +287,42 @@ public class PlayerVillageScript : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
     }
-
-    //Al agacharse identifica si tenemos un objeto encima para no atravesarlo si nos erguimos
-    //Al agacharse se realiza suavemente y viceversa
-    //Al agacharse no podemos correr y saltar
-    private IEnumerator CrouchStand()
-    {
-        if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
-            yield break;
-
-        duringCrouchAnimation = true;
-
-
-        float timeElapsed = 0;
-        float targetHeight = isCrouching ? standingHeight : crouchHeight;
-        float currentHeight = characterController.height;
-        Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
-        Vector3 currentCenter = characterController.center;
-
-        while (timeElapsed < timeToCrouch)
-        {
-            characterController.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed / timeToCrouch);
-            characterController.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed / timeToCrouch);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        characterController.height = targetHeight;
-        characterController.center = targetCenter;
-
-        isCrouching = !isCrouching;
-
-        duringCrouchAnimation = false;
-        canJump = !canJump;
-        canSprint = !canSprint;
-    }
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if(hit.gameObject.tag == "Begin")
+        {
+            SceneManager.LoadScene("Office_Scene");
+        }
+
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
         {
+            if (SceneManager.GetSceneByName("RedGreenTestScene").isLoaded) return;
+
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+
             SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
         }
         if (hit.gameObject.tag == "CubeJump" && missions[1] == false)
         {
+            if (SceneManager.GetSceneByName("Cube Jump").isLoaded) return;
+
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+
             SceneManager.LoadScene("Cube Jump", LoadSceneMode.Additive);
         }
         if (hit.gameObject.tag == "Maze" && missions[2] == false)
         {
+            if (SceneManager.GetSceneByName("Maze").isLoaded) return;
+
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);
+
+            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);          
         }
         if(hit.gameObject.tag == "FinalStart")
         {
