@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
         // Handle player input for movement
         if (!enabled) return; // Don't process input if controls are disabled
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, -90, transform.eulerAngles.z);
 
         }
-        //if d pressed
-        if (Input.GetKeyDown(KeyCode.D))
+        //if d pressed or left arrow pressed
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
         }

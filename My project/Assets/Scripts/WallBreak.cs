@@ -20,7 +20,8 @@ public class WallBreak : MonoBehaviour
             //destroy wall after 1 second
             done = true;
             StartCoroutine(LerpPosition(new Vector3(button1.transform.position.x, button1.transform.position.y - 0.1f, button1.transform.position.z), 1f));
-            Destroy(wall, 1f);
+            //decrease wall y by 4.5f
+            StartCoroutine(LerpPosition1(new Vector3(wall.transform.position.x, wall.transform.position.y - 4.5f, wall.transform.position.z), 1f));
         }
     }
 
@@ -35,5 +36,18 @@ public class WallBreak : MonoBehaviour
             yield return null;
         }
         button1.transform.position = targetPosition;
+    }
+
+    IEnumerator LerpPosition1(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = wall.transform.position;
+        while (time < duration)
+        {
+            wall.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        wall.transform.position = targetPosition;
     }
 }
