@@ -28,6 +28,12 @@ public class PlaneController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        throttle = 0f;
+        pitch = 0f;
+        roll = 0f;
+        yaw = 0f;
+
     }
 
     private void Update()
@@ -87,11 +93,11 @@ public class PlaneController : MonoBehaviour
         }
     }*/
 
-    IEnumerator ResPos()
+    /*IEnumerator ResPos()
     {
         yield return new WaitForSeconds(0.1f);
         transform.position = new Vector3(55.7099991f, 6.28000021f, -268.940002f);
         transform.rotation = Quaternion.Euler(0f, -90f, 0f);
-    }
+    }*/
 
 }
