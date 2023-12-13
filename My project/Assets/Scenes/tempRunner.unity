@@ -3170,6 +3170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button1: {fileID: 83996120}
   button2: {fileID: 1245559332}
+  buttonPress: {fileID: 904856846}
   wall: {fileID: 212355591}
 --- !u!4 &212355593
 Transform:
@@ -10587,12 +10588,12 @@ PrefabInstance:
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.61
+      value: -34.28
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 2106585151094673546, guid: 31bdf8eb5c2f2a545956e0763ca4c455,
         type: 3}
@@ -12554,6 +12555,8 @@ MonoBehaviour:
   p2: {fileID: 725009693}
   button1: {fileID: 83996120}
   button2: {fileID: 1245559332}
+  done1: 0
+  done2: 0
 --- !u!4 &904856848
 Transform:
   m_ObjectHideFlags: 0
@@ -18734,12 +18737,12 @@ PrefabInstance:
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.68
+      value: -32.85
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.1
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7830203463683870049, guid: f0aa068246263dd4ba7a61b712d2c765,
         type: 3}
