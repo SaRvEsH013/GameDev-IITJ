@@ -1,18 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 
 public class PlayerVillageScript : MonoBehaviour
 {
     public Animator animator;
-    public PlayableDirector Director;
     public bool CanMove { get; private set; } = true;
 
     public bool[] missions = new bool[3];
     public int missionCount = 0;
     public GameObject plane;
+    public Image fadeImage;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
@@ -61,7 +61,7 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField] private float crouchBobAmount = 0.025f;
     private float defaultYPos = 0;
     private float timer;
-    
+
     //private Vector3 hitPointNormal;
     private Camera playerCamera;
     private CharacterController characterController;
@@ -98,22 +98,23 @@ public class PlayerVillageScript : MonoBehaviour
 
     void Awake()
     {
-        Director = GetComponent<PlayableDirector>();
+        StartCoroutine(Fade(true));
+
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         defaultYPos = playerCamera.transform.localPosition.y;
-        
+
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
-        //Director.SetActive(false);
+
         audioSource = GetComponent<AudioSource>();
 
         // set missions to false
         for (int i = 0; i < missions.Length; i++)
         {
             missions[i] = false;
-        }                                                   
+        }
 
     }
 
@@ -141,7 +142,7 @@ public class PlayerVillageScript : MonoBehaviour
         animator.SetBool("Jump", ShouldJump);
         animator.SetBool("Run", isMoving);
         animator.SetBool("Sprint", isSpriting);
-                
+
         if (CanMove)
         {
             HandleMovementInput();
@@ -219,12 +220,12 @@ public class PlayerVillageScript : MonoBehaviour
             {
                 if (airTime > 0.2f)
                 {
-                   /* switch (soundControl)
-                    {
-                        case 0: audioSource.clip = Pasosmadera[Random.Range(0, Pasosmadera.Length)]; break;
-                        case 1: audioSource.clip = Pasospasto[Random.Range(0, Pasospasto.Length)]; break;
-                        case 2: audioSource.clip = Pasospiedra[Random.Range(0, Pasospiedra.Length)]; break;
-                    }*/
+                    /* switch (soundControl)
+                     {
+                         case 0: audioSource.clip = Pasosmadera[Random.Range(0, Pasosmadera.Length)]; break;
+                         case 1: audioSource.clip = Pasospasto[Random.Range(0, Pasospasto.Length)]; break;
+                         case 2: audioSource.clip = Pasospiedra[Random.Range(0, Pasospiedra.Length)]; break;
+                     }*/
                     tiempo = TimeBetweenSteps;
                     /*audioSource.pitch = Random.Range(0.65f, 0.70f);
                     audioSource.volume = Random.Range(0.65f, 0.75f);
@@ -289,8 +290,9 @@ public class PlayerVillageScript : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.gameObject.tag == "Begin")
+        if (hit.gameObject.tag == "Begin")
         {
+            StartCoroutine(Fade(false));
             SceneManager.LoadScene("Office_Scene");
         }
 
@@ -298,6 +300,7 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("RedGreenTestScene").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
@@ -308,6 +311,7 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("Cube Jump").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
@@ -318,17 +322,39 @@ public class PlayerVillageScript : MonoBehaviour
         {
             if (SceneManager.GetSceneByName("Maze").isLoaded) return;
 
+            StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
 
-            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);          
+            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);
         }
-        if(hit.gameObject.tag == "FinalStart")
+        if (hit.gameObject.tag == "FinalStart")
         {
             plane.gameObject.SetActive(true);
             this.enabled = false;
         }
     }
+
+    IEnumerator Fade(bool fadeAway)
+    {
+        if(fadeAway)
+        {
+            for(float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                fadeImage.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+        }
+        else
+        {
+            for(float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                fadeImage.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+        }
+    }
+    
 
 }
