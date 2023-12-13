@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlaneController : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class PlaneController : MonoBehaviour
     private float roll;
     private float yaw;
     public Animator animator;
-    private Rigidbody rb;
+    public Rigidbody rb;
+    public Camera cam;
+    public Camera cam2;
     private float responseModifier
     {
         get { return (rb.mass / 10f) * responsiveness; }
@@ -22,7 +25,6 @@ public class PlaneController : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Animator>().enabled = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -31,6 +33,11 @@ public class PlaneController : MonoBehaviour
         pitch = Input.GetAxis("Vertical") / 1f;
         roll = Input.GetAxis("Yaw");
         yaw = Input.GetAxis("Yaw");
+
+        //enable camera and disable camera 2 
+        
+        
+
 
         if(Input.GetKey(KeyCode.Space))
         {
