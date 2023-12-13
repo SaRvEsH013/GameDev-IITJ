@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonsScript : MonoBehaviour
@@ -10,9 +11,11 @@ public class ButtonsScript : MonoBehaviour
     public GameObject GameCan;
 
     public GameObject ball;
+    public Image fadeImage;
+    public GameObject fadeCan;
     void Start()
     {
-
+        StartCoroutine(Fade(true));
     }
 
 
@@ -69,14 +72,45 @@ public class ButtonsScript : MonoBehaviour
 
     public void onContinueMaze()
     {
+        StartCoroutine(Fade(false));
+        Invoke("LoadPlaneAnimation", 1f);
         //load plane initial animation and then load red green test scene
     }
 
     public void onBackMaze()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerVillageScript>().enabled = true;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        SceneManager.UnloadSceneAsync("Maze");
+        StartCoroutine(Fade(false));
+        Invoke("LoadOffice", 1f); 
+    }
+
+    void LoadOffice()
+    {
+        SceneManager.LoadScene("Office_Scene");
+    }
+    void LoadPlaneAnimation()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    IEnumerator Fade(bool fadeAway)
+    {
+        if (fadeAway)
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                fadeImage.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+            fadeImage.canvas.sortingOrder = -1;
+        }
+        else
+        {
+            fadeImage.canvas.sortingOrder = 10;
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                fadeImage.color = new Color(0, 0, 0, i);
+                yield return null;
+            }
+        }
     }
 }
