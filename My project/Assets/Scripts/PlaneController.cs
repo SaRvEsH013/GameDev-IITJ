@@ -39,7 +39,7 @@ public class PlaneController : MonoBehaviour
         //enable camera and disable camera 2 
         //How to get time 
         
-        if ( transform.position.z <-9.3)
+        if ( transform.position.z <-9.3 && !SceneManager.GetSceneByName("Airport taking off").isLoaded)
         {
             SceneManager.LoadScene("Airport taking off");
         }
@@ -68,9 +68,9 @@ public class PlaneController : MonoBehaviour
         rb.AddForce(Vector3.up * rb.velocity.magnitude * lift);
     }
 
-    private void OnCollisionEnter(Collision collision)
+/*    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Runway")
+        if (!collision.gameObject.CompareTag("Runway"))
         {
             rb.velocity = Vector3.zero;
             throttle = 0f;
@@ -85,7 +85,7 @@ public class PlaneController : MonoBehaviour
             StartCoroutine(ResPos());
             
         }
-    }
+    }*/
 
     IEnumerator ResPos()
     {
