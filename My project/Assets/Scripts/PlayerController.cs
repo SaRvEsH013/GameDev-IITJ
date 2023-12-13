@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            canWall1Jump = true;
+            canWallJump = true;
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {
