@@ -3292,7 +3292,7 @@ MonoBehaviour:
   throttleIncrement: 0.1
   maxThrust: 200
   responsiveness: 1
-  lift: 135
+  lift: 70
   animator: {fileID: 0}
   rb: {fileID: 0}
   cam: {fileID: 0}
@@ -26173,6 +26173,7 @@ GameObject:
   - component: {fileID: 771129244}
   - component: {fileID: 771129243}
   - component: {fileID: 771129242}
+  - component: {fileID: 771129246}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -26268,6 +26269,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!114 &771129246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771129241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653f3115034fb2c4c804e432a942f6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &772231832
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsScript : MonoBehaviour
 {
+    public GameObject EscMenu;
     public GameObject eventMan;
     public GameObject introCan;
     public GameObject GameCan;
+    public GameObject fadeCan;
+    public Image fadeImage;
 
     public GameObject ball;
-    public Image fadeImage;
-    public GameObject fadeCan;
     void Start()
     {
         StartCoroutine(Fade(true));
@@ -21,7 +22,19 @@ public class ButtonsScript : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(EscMenu.activeSelf == false)
+            {
+                Time.timeScale = 0f;
+                EscMenu.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                EscMenu.SetActive(false);
+            }
+        }
     }
 
     public void OnStartClick()
@@ -92,6 +105,20 @@ public class ButtonsScript : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void onQuitEsc()
+    {
+        Application.Quit();
+    }
+    public void onBackEsc()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void onResumeEsc()
+    {
+        Time.timeScale = 1f;
+        EscMenu.SetActive(false);
+    }
     IEnumerator Fade(bool fadeAway)
     {
         if (fadeAway)
