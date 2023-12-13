@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class MundiGhumao : MonoBehaviour
 {
+    public bool leftSided = false;
     private void Update()
     {
-        //if a is pressed mundi ghumao
+        //check if playerController is enabled or not
+        if (!GetComponent<PlayerController>().enabled)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.Rotate(0, 0, 90);
+            if (!leftSided)
+            {
+                transform.Rotate(0, 180, 0);
+                leftSided = true;
+            }
         }
-    }
-
-    IEnumerator lerpRotation(Quaternion targetRotation, float duration)
-    {
-        Quaternion startRotation = transform.rotation;
-        float time = 0;
-        while (time < duration)
+        //if d pressed
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / duration);
-            time += Time.deltaTime;
-            yield return null;
+            if (leftSided)
+            {
+                transform.Rotate(0, 180, 0);
+                leftSided = false;
+            }
         }
-        transform.rotation = targetRotation;
     }
 }
