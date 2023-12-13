@@ -9,9 +9,16 @@ public class CubeController : MonoBehaviour
     public bool isGrounded;
     public float moveSpeed = 200f; // Speed of the cuboid
     //Space button should apply a force in y and z direction to the cube
+    public bool hasStarted = false;
     
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+        {
+            hasStarted = true;
+            introScreen.SetActive(false);
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             //check if intro screen is active
