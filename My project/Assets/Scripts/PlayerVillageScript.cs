@@ -290,13 +290,14 @@ public class PlayerVillageScript : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == "Begin")
+        if (hit.gameObject.CompareTag("Begin"))
         {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             StartCoroutine(Fade(false));
+            //freeze player position
 
             // load "office_scene" scene after 1 second delay 
-            Invoke("LoadOfficeScene", 1f);
-            SceneManager.LoadScene("Office_Scene");
+            Invoke(nameof(LoadOfficeScene), 1f);
         }
 
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
@@ -305,7 +306,6 @@ public class PlayerVillageScript : MonoBehaviour
 
             StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
 
             SceneManager.LoadScene("RedGreenTestScene", LoadSceneMode.Additive);
@@ -316,8 +316,8 @@ public class PlayerVillageScript : MonoBehaviour
 
             StartCoroutine(Fade(false));
             transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z);
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
+
 
             SceneManager.LoadScene("Cube Jump", LoadSceneMode.Additive);
         }
@@ -326,10 +326,9 @@ public class PlayerVillageScript : MonoBehaviour
             if (SceneManager.GetSceneByName("Maze").isLoaded) return;
 
             StartCoroutine(Fade(false));
-            transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            //transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
-
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; 
             Invoke("LoadMazeScene", 1f);
         }
         if (hit.gameObject.tag == "FinalStart")
