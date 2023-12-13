@@ -19,6 +19,7 @@ TagManager:
   - FxTemporaire
   - Door
   - Begin
+  - Direct
   layers:
   - Default
   - TransparentFX

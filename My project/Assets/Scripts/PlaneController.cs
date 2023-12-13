@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class PlaneController : MonoBehaviour
@@ -35,8 +37,12 @@ public class PlaneController : MonoBehaviour
         yaw = Input.GetAxis("Yaw");
 
         //enable camera and disable camera 2 
+        //How to get time 
         
-        
+        if ( transform.position.z <-9.3)
+        {
+            SceneManager.LoadScene("Airport taking off");
+        }
 
 
         if(Input.GetKey(KeyCode.Space))
