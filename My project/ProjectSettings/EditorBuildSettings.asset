@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/03 - Islands.unity
+    guid: 266d18a39c556cd4c8f810a63e9df0db
+  - enabled: 1
+    path: Assets/Scenes/Office_Scene.unity
+    guid: 5d3c3fdc61115714e83ccdbcb1ecf0fb
+  - enabled: 1
+    path: Assets/Scenes/Maze.unity
+    guid: 5f66713930f36f84a865122d99889d76
+  - enabled: 1
+    path: Assets/Scenes/Airport_Cutscene.unity
+    guid: 939d028625ae48449b7c1a35f7bfd445
   - enabled: 1
     path: Assets/Scenes/RedGreenTestScene.unity
     guid: 99f0cafc2ccdf73488832d5ea6f609a1
   - enabled: 1
     path: Assets/Scenes/Cube Jump.unity
     guid: 23a35b2c2f799cd49802c5a44ae31e4c
-  - enabled: 1
-    path: Assets/Scenes/Maze.unity
-    guid: 5f66713930f36f84a865122d99889d76
-  - enabled: 1
-    path: Assets/Scenes/Office_Scene.unity
-    guid: 5d3c3fdc61115714e83ccdbcb1ecf0fb
-  - enabled: 1
-    path: Assets/Scenes/Airport_Cutscene.unity
-    guid: 939d028625ae48449b7c1a35f7bfd445
-  - enabled: 1
-    path: Assets/Scenes/03 - Islands.unity
-    guid: 266d18a39c556cd4c8f810a63e9df0db
   m_configObjects: {}

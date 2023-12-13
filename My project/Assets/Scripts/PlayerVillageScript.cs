@@ -293,6 +293,9 @@ public class PlayerVillageScript : MonoBehaviour
         if (hit.gameObject.tag == "Begin")
         {
             StartCoroutine(Fade(false));
+
+            // load "office_scene" scene after 1 second delay 
+            Invoke("LoadOfficeScene", 1f);
             SceneManager.LoadScene("Office_Scene");
         }
 
@@ -327,13 +330,22 @@ public class PlayerVillageScript : MonoBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             gameObject.GetComponent<PlayerVillageScript>().enabled = false;
 
-            SceneManager.LoadScene("Maze", LoadSceneMode.Additive);
+            Invoke("LoadMazeScene", 1f);
         }
         if (hit.gameObject.tag == "FinalStart")
         {
             plane.gameObject.SetActive(true);
             this.enabled = false;
         }
+    }
+
+    private void LoadOfficeScene()
+    {
+        SceneManager.LoadScene("Office_Scene");
+    }
+    private void LoadMazeScene()
+    {
+        SceneManager.LoadScene("Maze");
     }
 
     IEnumerator Fade(bool fadeAway)
