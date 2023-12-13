@@ -15,9 +15,9 @@ public class event_plane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < -9)
-        {
-            SceneManager.LoadScene("03 - Islands");
-        }
+        //if (transform.position.z < -9)
+        //{
+        //    SceneManager.LoadScene("03 - Islands");
+        //}
     }
 }
