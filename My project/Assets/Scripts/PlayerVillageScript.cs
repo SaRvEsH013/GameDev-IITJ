@@ -326,8 +326,6 @@ public class PlayerVillageScript : MonoBehaviour
             if (SceneManager.GetSceneByName("Maze").isLoaded) return;
 
             StartCoroutine(Fade(false));
-            //transform.position = new Vector3(transform.position.x + 2, transform.position.y + 1, transform.position.z);
-            gameObject.GetComponent<PlayerVillageScript>().enabled = false;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; 
             Invoke("LoadMazeScene", 1f);
         }
