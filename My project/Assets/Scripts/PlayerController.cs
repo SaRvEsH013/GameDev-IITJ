@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -110,5 +111,18 @@ public class PlayerController : MonoBehaviour
     public bool IsPlayerEnabled
     {
         get { return enabled; }
+    }
+
+    IEnumerator LerpRotation(Quaternion targetRotation, float duration)
+    {
+        float time = 0;
+        Quaternion startRotation = transform.rotation;
+        while (time < duration)
+        {
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = targetRotation;
     }
 }
