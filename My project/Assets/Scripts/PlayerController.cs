@@ -30,6 +30,53 @@ public class PlayerController : MonoBehaviour
         // Handle player input for movement
         if (!enabled) return; // Don't process input if controls are disabled
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, -90, transform.eulerAngles.z);
+
+        }
+        //if d pressed
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
+        }
+
+        if (nameOfPlayer == "DefaultMalePBR" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
+        {
+            gravityFactor2 *= -1;
+            if(gravityFactor2 > 0)
+            {
+                //use leftSided from MundiGhumao.cs
+                if(GetComponent<MundiGhumao>().leftSided)
+                {
+                    // move player 0.2f down
+                    StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), 0.5f));
+                    StartCoroutine(LerpRotation(Quaternion.Euler(180, 90, 180), 0.4f));
+                }
+                else
+                {
+                    // move player 0.2f up
+                    StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), 0.5f));
+                    StartCoroutine(LerpRotation(Quaternion.Euler(180, -90, 180), 0.4f));
+                }
+            }
+            else
+            {
+                //use leftSided from MundiGhumao.cs
+                if (GetComponent<MundiGhumao>().leftSided)
+                {
+                    // move player 0.2f down
+                    StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), 0.5f));
+                    StartCoroutine(LerpRotation(Quaternion.Euler(180, 90, 0), 0.4f));
+                }
+                else
+                {
+                    // move player 0.2f up
+                    StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), 0.5f));
+                    StartCoroutine(LerpRotation(Quaternion.Euler(180, -90, 0), 0.4f));
+                }
+            }
+        }
 
         // Get input from the keyboard
         float xInput = Input.GetAxis("Horizontal");
@@ -70,22 +117,6 @@ public class PlayerController : MonoBehaviour
             canWallJump = false; // Reset wall jump flag
             canWall1Jump = false; // Reset wall jump flag
             lastJump = 1;
-        }
-        if(nameOfPlayer == "DefaultMalePBR" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
-        {
-            gravityFactor2 *= -1;
-            if(gravityFactor2 > 0)
-            {
-                // move player 0.2f down
-                StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), 0.5f));
-                StartCoroutine(LerpRotation(Quaternion.Euler(180,-90, 180), 0.4f));
-            }
-            else
-            {
-                // move player 0.2f up
-                StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), 0.5f));
-                StartCoroutine(LerpRotation(Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0), 0.4f));
-            }
         }
     }
 

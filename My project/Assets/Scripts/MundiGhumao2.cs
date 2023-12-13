@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MundiGhumao : MonoBehaviour
+public class MundiGhumao2 : MonoBehaviour
 {
-    public bool leftSided = false;
+    private bool leftSided = true;
     private void Update()
     {
         //check if playerController is enabled or not
