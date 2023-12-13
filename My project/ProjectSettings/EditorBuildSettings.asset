@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cube Jump.unity
     guid: 23a35b2c2f799cd49802c5a44ae31e4c
+  - enabled: 1
+    path: Assets/Scenes/Airport taking off.unity
+    guid: 25dfebc933e30f24f8ce3c38713dc21e
   m_configObjects: {}
