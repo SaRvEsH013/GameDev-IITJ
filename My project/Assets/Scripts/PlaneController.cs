@@ -65,13 +65,13 @@ public class PlaneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * throttle * maxThrust);
+        rb.AddForce(maxThrust * throttle * transform.forward);
 
-        rb.AddTorque(transform.right * pitch * responseModifier * 3f);
+        rb.AddTorque(20f * pitch * responseModifier * transform.right);
         //rb.AddTorque(-transform.forward * roll * responseModifier);
-        rb.AddTorque(transform.up * yaw * responseModifier * 6f);
+        rb.AddTorque(25f * responseModifier * yaw * transform.up);
 
-        rb.AddForce(Vector3.up * rb.velocity.magnitude * lift);
+        rb.AddForce(lift * rb.velocity.magnitude * Vector3.up);
     }
 
 /*    private void OnCollisionEnter(Collision collision)
