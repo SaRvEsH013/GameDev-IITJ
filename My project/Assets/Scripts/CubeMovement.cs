@@ -11,9 +11,12 @@ public class CubeController : MonoBehaviour
     //Space button should apply a force in y and z direction to the cube
     public bool hasStarted = false;
     public AudioClip lavaDeath;
+    public Animator animator;
     
+
     void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Space) && !hasStarted)
         {
             hasStarted = true;
@@ -28,6 +31,15 @@ public class CubeController : MonoBehaviour
                 cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, -1f*moveSpeed);
                 isGrounded = false;
             }
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("jump", true);
+        }
+        else
+        {
+            animator.SetBool("jump", false);
+
         }
     }
 
