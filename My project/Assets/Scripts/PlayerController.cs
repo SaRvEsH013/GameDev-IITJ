@@ -95,7 +95,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("jump", true);
         }
-        
+        else
+        {
+            animator.SetBool ("jump", false);
+        }
 
         //print(xInput);
         // Move the cube continuously using the horizontal input
