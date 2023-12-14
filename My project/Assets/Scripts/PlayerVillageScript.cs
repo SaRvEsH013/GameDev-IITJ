@@ -13,6 +13,11 @@ public class PlayerVillageScript : MonoBehaviour
     public int missionCount = 0;
     public GameObject plane;
     public Image fadeImage;
+
+    public AudioClip islandBack;
+    public AudioClip office;
+    public AudioClip walk;
+    public AudioClip cylinder;
     //private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     //private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
     //private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
@@ -104,6 +109,10 @@ public class PlayerVillageScript : MonoBehaviour
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
+        tiempo = 0;
+        soundControl = 0;
+        isMoving = false;
+        TimeBetweenSteps = 0.5f;
 
         //audioSource = GetComponent<AudioSource>();
 
@@ -111,6 +120,11 @@ public class PlayerVillageScript : MonoBehaviour
         {
             missions[i] = false;
         }
+
+        // play island background music
+        //check if loaded scene is "Village"
+        if (SceneManager.GetActiveScene().buildIndex == 0) AudioSource.PlayClipAtPoint(islandBack, transform.position);
+        else AudioSource.PlayClipAtPoint(office, transform.position);
 
     }
 
@@ -156,6 +170,23 @@ public class PlayerVillageScript : MonoBehaviour
             GetComponent<Rigidbody>().angularVelocity.x.Equals(0);
         }*/
 
+        // if player is moving, play walking sound on loop
+        if (isMoving)
+        {
+            if (soundControl == 0)
+            {
+                // play walk with low volume
+                AudioSource.PlayClipAtPoint(walk , transform.position, 0.1f);
+                soundControl = 1;
+            }
+            tiempo += Time.deltaTime;
+            if (tiempo >= TimeBetweenSteps)
+            {
+                tiempo = 0;
+                soundControl = 0;
+            }
+        }
+
     }
     private void OnCollisionEnter(Collision hit)
     {
@@ -167,6 +198,8 @@ public class PlayerVillageScript : MonoBehaviour
 
             // load "office_scene" scene after 1 second delay 
             Invoke(nameof(LoadOfficeScene), 1f);
+            // play cylinder sound
+            AudioSource.PlayClipAtPoint(cylinder, transform.position);
         }
 
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)
@@ -197,6 +230,8 @@ public class PlayerVillageScript : MonoBehaviour
             StartCoroutine(Fade(false));
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             Invoke("LoadMazeScene", 1f);
+            // play cylinder sound
+            AudioSource.PlayClipAtPoint(cylinder, transform.position);
         }
         if (hit.gameObject.tag == "FinalStart")
         {

@@ -10,6 +10,7 @@ public class CubeController : MonoBehaviour
     public float moveSpeed = 200f; // Speed of the cuboid
     //Space button should apply a force in y and z direction to the cube
     public bool hasStarted = false;
+    public AudioClip lavaDeath;
     
     void Update()
     {
@@ -44,6 +45,7 @@ public class CubeController : MonoBehaviour
         //tag if ObstacleCube then show lost screen
         if (collision.gameObject.CompareTag("LostCube") && !wonScreen.activeSelf)
         {
+            AudioSource.PlayClipAtPoint(lavaDeath, transform.position);
             lostScreen.SetActive(true);
         }
     }
