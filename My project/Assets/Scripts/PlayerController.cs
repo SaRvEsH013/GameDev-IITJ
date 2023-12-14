@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     // Adjust this factor to control how fast the cube falls (opposite gravity)
     public float gravityFactor2;
     private string nameOfPlayer;
+    private bool leftSided = false;
 
     void Start()
     {
@@ -33,21 +34,23 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, -90, transform.eulerAngles.z);
+            leftSided = true;
 
         }
         //if d pressed or left arrow pressed
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
+            leftSided = false;
         }
 
-        if (nameOfPlayer == "DefaultMalePBR" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
+        if (nameOfPlayer == "Man_Full (1)" && Input.GetKeyDown(KeyCode.P) && rb.velocity.y < 0.01 && rb.velocity.y > -0.1)
         {
             gravityFactor2 *= -1;
             if(gravityFactor2 > 0)
             {
                 //use leftSided from MundiGhumao.cs
-                if(GetComponent<MundiGhumao>().leftSided)
+                if(leftSided)
                 {
                     // move player 0.2f down
                     StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), 0.5f));
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //use leftSided from MundiGhumao.cs
-                if (GetComponent<MundiGhumao>().leftSided)
+                if (leftSided)
                 {
                     // move player 0.2f down
                     StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), 0.5f));
@@ -118,7 +121,7 @@ public class PlayerController : MonoBehaviour
             canWall1Jump = false; // Reset wall jump flag
             lastJump = -1;
         }
-        if((canWallJump) && Input.GetButtonDown("Jump") && lastJump!=0 && nameOfPlayer== "DefaultFemalePBR")
+        if((canWallJump) && Input.GetButtonDown("Jump") && lastJump!=0 && nameOfPlayer== "Man_Full")
         {
             Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
             rb.AddForce(gravityFactor2 * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);
@@ -127,7 +130,7 @@ public class PlayerController : MonoBehaviour
             canWall1Jump = false; // Reset wall jump flag
             lastJump = 0;
         }
-        if ((canWall1Jump) && Input.GetButtonDown("Jump") && lastJump != 1 && nameOfPlayer == "DefaultFemalePBR")
+        if ((canWall1Jump) && Input.GetButtonDown("Jump") && lastJump != 1 && nameOfPlayer == "Man_Full")
         {
             Vector3 jumpDirection = isGrounded ? Vector3.up : Vector3.up + Vector3.forward; // Change the jump direction if jumping off a wall
             rb.AddForce(gravityFactor2 * (isGrounded ? jumpForce : wallJumpForce) * jumpDirection, ForceMode.Impulse);

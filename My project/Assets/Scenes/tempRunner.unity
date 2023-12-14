@@ -3900,8 +3900,18 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9d1c7c75949d53b4fa9131ea86886b27, type: 2}
     - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
+        type: 3}
       propertyPath: m_WarningMessage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7465294887362724044, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
@@ -7036,8 +7046,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4545336, z: 0.34701714}
-  m_Center: {x: 6.828457e-17, y: 0.2727332, z: -0.020430095}
+  m_Size: {x: 1, y: 1.8742101, z: 0.34701714}
+  m_Center: {x: -1.1397612e-16, y: 0.913987, z: -0.0204301}
 --- !u!114 &402546561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7065,7 +7075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc0e19fab4991b48b01c99be8907542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   jumpForce: 3.9
   wallJumpForce: 5
   animator: {fileID: 402546565}
@@ -7078,7 +7088,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402546559}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -7092,7 +7102,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -9788,8 +9798,18 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9d1c7c75949d53b4fa9131ea86886b27, type: 2}
     - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
+        type: 3}
       propertyPath: m_WarningMessage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7465294887362724044, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
@@ -9804,22 +9824,22 @@ PrefabInstance:
     - target: {fileID: 7841293106933389942, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7841293106933389942, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7841293106933389942, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7841293106933389942, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8
+      value: -15.45
       objectReference: {fileID: 0}
     - target: {fileID: 7841293106933389942, guid: 5358fd1db56fd5f4ebd3a9185f223155,
         type: 3}
@@ -25232,7 +25252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc0e19fab4991b48b01c99be8907542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   jumpForce: 3.9
   wallJumpForce: 5
   animator: {fileID: 1697207902}
@@ -25245,7 +25265,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697207896}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -25259,7 +25279,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
