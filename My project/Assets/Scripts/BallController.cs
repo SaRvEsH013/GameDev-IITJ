@@ -13,6 +13,7 @@ public class BallController : MonoBehaviour
     private bool isMoving = false;
     private Vector3 curVel = Vector3.zero;
     private bool won;
+    private bool lost;
         
     void Start()
     {
@@ -43,7 +44,7 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "TargetCube")
+        if(collision.gameObject.tag == "TargetCube" && !lost)
         {
             //this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             wonCan.SetActive(true);
@@ -52,6 +53,7 @@ public class BallController : MonoBehaviour
         else if(!won)
         {
             lostCan.SetActive(true);
+            lost = true;
         }
         //else if(collision.gameObject.tag != "TargetCube")
         //{
