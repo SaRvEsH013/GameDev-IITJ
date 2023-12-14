@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &46568846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +704,8 @@ MonoBehaviour:
   speed: 10
   wonCan: {fileID: 1985022093}
   lostCan: {fileID: 738700725}
+  mazeLost: {fileID: 8300000, guid: b2183eec4fa50f94e9ad46254018201e, type: 3}
+  mazeWon: {fileID: 8300000, guid: ccfbe8f4121a1bd459fc7bcc59c0b041, type: 3}
 --- !u!96 &71548436
 TrailRenderer:
   serializedVersion: 3
@@ -4537,6 +4539,8 @@ MonoBehaviour:
   GameCan: {fileID: 1895491377}
   fadeCan: {fileID: 0}
   fadeImage: {fileID: 1715103819}
+  mazeStart: {fileID: 8300000, guid: bb502db40fa03cd4eb9b9cb7b20aa4f7, type: 3}
+  lava: {fileID: 0}
   ball: {fileID: 71548434}
 --- !u!114 &1346720330
 MonoBehaviour:

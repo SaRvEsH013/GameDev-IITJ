@@ -176,7 +176,7 @@ public class PlayerVillageScript : MonoBehaviour
             if (soundControl == 0)
             {
                 // play walk with low volume
-                AudioSource.PlayClipAtPoint(walk , transform.position, 0.1f);
+                AudioSource.PlayClipAtPoint(walk , transform.position, 0.06f);
                 soundControl = 1;
             }
             tiempo += Time.deltaTime;
@@ -199,7 +199,7 @@ public class PlayerVillageScript : MonoBehaviour
             // load "office_scene" scene after 1 second delay 
             Invoke(nameof(LoadOfficeScene), 1f);
             // play cylinder sound
-            AudioSource.PlayClipAtPoint(cylinder, transform.position);
+            AudioSource.PlayClipAtPoint(cylinder, transform.position, 0.3f);
         }
 
         if (hit.gameObject.tag == "RedGreen" && missions[0] == false)

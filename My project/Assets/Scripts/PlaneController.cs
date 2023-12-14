@@ -26,6 +26,7 @@ public class PlaneController : MonoBehaviour
     public GameObject lostCan;
 
     public AudioClip airportBack;
+    public AudioClip cylinder;
     private float responseModifier
     {
         get { return (rb.mass / 10f) * responsiveness; }
@@ -42,7 +43,7 @@ public class PlaneController : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Airport_Cutscene")
         {
-            AudioSource.PlayClipAtPoint(airportBack, transform.position);
+            AudioSource.PlayClipAtPoint(airportBack, transform.position, 4f);
         }
     }
 
@@ -99,6 +100,7 @@ public class PlaneController : MonoBehaviour
     {
         if (other.gameObject.tag == "VolcanoStart")
         {
+            AudioSource.PlayClipAtPoint(cylinder, transform.position, 0.7f);
             count++;
             other.gameObject.SetActive(false);
         }

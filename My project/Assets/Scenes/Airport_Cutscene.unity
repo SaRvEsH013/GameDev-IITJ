@@ -21570,7 +21570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672076865}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.069679864, y: 0.915766, z: -0.18152817, w: 0.35151815}
+  m_LocalRotation: {x: 0.06967985, y: 0.91576594, z: -0.18152817, w: 0.3515181}
   m_LocalPosition: {x: 118.3, y: 45.7, z: 101.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -58293,7 +58293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780609864}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.069679864, y: 0.915766, z: -0.18152817, w: 0.35151815}
+  m_LocalRotation: {x: 0.06967985, y: 0.91576594, z: -0.18152817, w: 0.3515181}
   m_LocalPosition: {x: 118.3, y: 45.7, z: 101.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63783,10 +63783,14 @@ MonoBehaviour:
   maxThrust: 200
   responsiveness: 1
   lift: 135
+  count: 0
   animator: {fileID: 0}
   rb: {fileID: 1966145467}
   cam: {fileID: 0}
   cam2: {fileID: 672076867}
+  fadeImage: {fileID: 0}
+  lostCan: {fileID: 0}
+  airportBack: {fileID: 8300000, guid: e4e14b932a744df4393e89fd637f1f51, type: 3}
 --- !u!1001 &1969403761
 PrefabInstance:
   m_ObjectHideFlags: 0
