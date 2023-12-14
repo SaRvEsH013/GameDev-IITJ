@@ -103,7 +103,7 @@ public class PlayerVillageScript : MonoBehaviour
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
-        defaultYPos = playerCamera.transform.localPosition.y;
+        defaultYPos = transform.localPosition.y;
 
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
@@ -246,7 +246,7 @@ public class PlayerVillageScript : MonoBehaviour
 
         float moveDirectionY = moveDirection.y;
         moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
-        moveDirection.y = moveDirectionY;
+        //moveDirection.y = moveDirectionY;
 
     }
 
