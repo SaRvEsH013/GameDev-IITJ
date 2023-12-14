@@ -27,6 +27,8 @@ public class PlaneController : MonoBehaviour
 
     public AudioClip airportBack;
     public AudioClip cylinder;
+    public AudioSource tp;
+
     private float responseModifier
     {
         get { return (rb.mass / 10f) * responsiveness; }
@@ -45,10 +47,14 @@ public class PlaneController : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(airportBack, cam2.transform.position, 1f);
         }
+
+        tp = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+
+
         if(count == 2)
         {
             StartCoroutine(Fade(false));
@@ -78,6 +84,11 @@ public class PlaneController : MonoBehaviour
         }
 
         throttle = Mathf.Clamp(throttle, 0f, 100f);
+
+        //map pitch from 0.85 to 1.15 corresponding to throttle value
+        float pt = (throttle / 100f) * 0.3f + 0.85f;
+        print(pt);
+        tp.pitch = pt;
     }
     void LoadVolcano()
     {
