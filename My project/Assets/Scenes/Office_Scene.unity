@@ -3196,6 +3196,10 @@ MonoBehaviour:
   missionCount: 0
   plane: {fileID: 0}
   fadeImage: {fileID: 1490263831}
+  islandBack: {fileID: 0}
+  office: {fileID: 0}
+  walk: {fileID: 0}
+  cylinder: {fileID: 0}
   walkSpeed: 4
   sprintSpeed: 7
   crouchSpeed: 0
@@ -14008,6 +14012,8 @@ MonoBehaviour:
   GameCan: {fileID: 0}
   fadeCan: {fileID: 0}
   fadeImage: {fileID: 1490263831}
+  mazeStart: {fileID: 0}
+  lava: {fileID: 0}
   ball: {fileID: 0}
 --- !u!4 &2079083850 stripped
 Transform:
@@ -14529,6 +14535,10 @@ MonoBehaviour:
   missionCount: 0
   plane: {fileID: 0}
   fadeImage: {fileID: 1490263831}
+  islandBack: {fileID: 0}
+  office: {fileID: 8300000, guid: 9f4d4d420c91a4946bd2ff442b00036f, type: 3}
+  walk: {fileID: 8300000, guid: f81337180a1d8bd4cab313530ddefe95, type: 3}
+  cylinder: {fileID: 8300000, guid: 01f4d6f0d44c70140bf69313009f9443, type: 3}
   walkSpeed: 5
   sprintSpeed: 6
   crouchSpeed: 1.5
