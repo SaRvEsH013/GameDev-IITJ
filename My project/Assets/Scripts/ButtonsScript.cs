@@ -57,9 +57,24 @@ public class ButtonsScript : MonoBehaviour
         eventMan.GetComponent<GameScript>().enabled = true;
     }
 
+    public void OnStartTempRunner()
+    {
+        introCan.SetActive(false);
+        //if Gamecan is not null then set it to active
+        if (GameCan != null)
+        {
+            GameCan.SetActive(true);
+        }
+    }
+
     public void OnContinueClick()
     {
         SceneManager.LoadScene("Airport taking off");
+    }
+
+    public void OnRestartTempRunner()
+    {
+        SceneManager.LoadScene("tempRunner");
     }
 
     public void onBackClick()

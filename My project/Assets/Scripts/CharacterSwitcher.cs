@@ -56,6 +56,11 @@ public class CharacterSwitcher : MonoBehaviour
 
     void SwitchCharacter()
     {
+        //if both disabled, do nothing
+        if (!p1Controller.enabled && !p2Controller.enabled)
+        {
+            return;
+        }
         if (p1Controller.enabled)
         {
             pa1.Rebind();
