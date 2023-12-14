@@ -40,7 +40,7 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField, Range(1, 180)] private float lowerLookLimit = 80.0f;
 
     [Header("Jumping Parameters")]
-    [SerializeField] private float jumpForce = 8.0f;
+    [SerializeField] private float jumpForce = 15.0f;
     [SerializeField] private float gravity = 30.0f;
 
     [Header("Crouch Parameters")]

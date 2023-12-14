@@ -81,7 +81,25 @@ public class PlayerController : MonoBehaviour
         // Get input from the keyboard
         float xInput = Input.GetAxis("Horizontal");
 
-        animator.SetFloat("speed", xInput );
+        if(xInput != 0f)
+        {
+            animator.SetBool("run",true);
+
+        }
+        else
+        {
+            animator.SetBool("run", false);
+        }
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            animator.SetBool("jump", true);
+        }
+        else
+        {
+            animator.SetBool ("jump", false);
+        }
+
         //print(xInput);
         // Move the cube continuously using the horizontal input
         rb.AddForce(new Vector3(xInput, 0, 0) * speed);
