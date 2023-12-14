@@ -21,7 +21,6 @@ TagManager:
   - Begin
   - Direct
   - VolcanoStart
-  - lostGame
   layers:
   - Default
   - TransparentFX

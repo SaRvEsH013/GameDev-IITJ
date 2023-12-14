@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public float gravityFactor2;
     private string nameOfPlayer;
     private bool leftSided = false;
-    public GameObject lostCanvas;
 
     void Start()
     {
@@ -206,18 +205,5 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPosition;
         yield return new WaitForSeconds(0.5f);
-    }
-
-    //check trigger collision
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("lostGame"))
-        {
-            //print("lost game");
-            //disable controls
-            DisableControls();
-            //show lost canvas
-            lostCanvas.SetActive(true);
-        }
     }
 }
