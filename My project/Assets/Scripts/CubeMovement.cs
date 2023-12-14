@@ -13,6 +13,9 @@ public class CubeController : MonoBehaviour
 
     public AudioClip lavaDeath;
     public AudioClip jump;
+    public GameObject camera;
+
+    
     
     void Update()
     {
@@ -28,7 +31,7 @@ public class CubeController : MonoBehaviour
             if (!introScreen.activeSelf && !lostScreen.activeSelf && !wonScreen.activeSelf)
             {
                 cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, -1f*moveSpeed);
-                AudioSource.PlayClipAtPoint(jump, transform.position);
+                AudioSource.PlayClipAtPoint(jump, camera.transform.position);
                 isGrounded = false;
             }
         }

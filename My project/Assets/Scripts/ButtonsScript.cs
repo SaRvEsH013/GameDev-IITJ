@@ -22,7 +22,7 @@ public class ButtonsScript : MonoBehaviour
         StartCoroutine(Fade(true));
 
         if(SceneManager.GetActiveScene().name == "Maze") AudioSource.PlayClipAtPoint(mazeStart, transform.position);
-        if(SceneManager.GetActiveScene().name == "Cube Jump") AudioSource.PlayClipAtPoint(lava, transform.position);
+        if(SceneManager.GetActiveScene().name == "Cube Jump") AudioSource.PlayClipAtPoint(lava, transform.position, 0.5f);
     }
 
 
