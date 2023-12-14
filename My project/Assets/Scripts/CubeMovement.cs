@@ -10,7 +10,9 @@ public class CubeController : MonoBehaviour
     public float moveSpeed = 200f; // Speed of the cuboid
     //Space button should apply a force in y and z direction to the cube
     public bool hasStarted = false;
+
     public AudioClip lavaDeath;
+    public AudioClip jump;
     
     void Update()
     {
@@ -26,6 +28,7 @@ public class CubeController : MonoBehaviour
             if (!introScreen.activeSelf && !lostScreen.activeSelf && !wonScreen.activeSelf)
             {
                 cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, -1f*moveSpeed);
+                AudioSource.PlayClipAtPoint(jump, transform.position);
                 isGrounded = false;
             }
         }
