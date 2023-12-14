@@ -15,7 +15,7 @@ public class ButtonsScript : MonoBehaviour
 
     public AudioClip mazeStart;
     public AudioClip lava;
-
+    
     public GameObject ball;
     void Start()
     {
@@ -28,6 +28,7 @@ public class ButtonsScript : MonoBehaviour
 
     void Update()
     {
+        Global_Script.global_time += Time.time/1000;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(EscMenu.activeSelf == false)
