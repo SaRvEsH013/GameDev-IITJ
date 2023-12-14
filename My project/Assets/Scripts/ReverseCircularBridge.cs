@@ -7,7 +7,10 @@ public class ReverseCircularBridge : MonoBehaviour
     public GameObject circularBridge;
     public GameObject p2;
     public GameObject button2;
+    public GameObject cam;
     private bool done = false;
+    public PlayerController pl1;
+    public PlayerController pl2;
 
     private void Update()
     {
@@ -18,8 +21,16 @@ public class ReverseCircularBridge : MonoBehaviour
             print(button2.transform.position.y);
             button2.transform.position = Vector3.Lerp(button2.transform.position, new Vector3(button2.transform.position.x, 4.78f + 0.1f, button2.transform.position.z), 1f * Time.deltaTime);*/
             done = true;
+            //disable controls for both players
+            pl1.DisableControls();
+            pl2.DisableControls();
+            //move camera to the center of the bridge
+            StartCoroutine(LerpPosition1(new Vector3(circularBridge.transform.position.x, circularBridge.transform.position.y, circularBridge.transform.position.z - 6f), 0.5f));
             StartCoroutine(LerpPosition(new Vector3(button2.transform.position.x, 4.78f + 0.1f, button2.transform.position.z), 5f));
             StartCoroutine(LerpRotation(Quaternion.Euler(0, 0, 0), 5f));
+
+            //enable controls for both players after 5 seconds
+            StartCoroutine(EnableControlsAfter(5f));
         }
     }
 
@@ -47,5 +58,24 @@ public class ReverseCircularBridge : MonoBehaviour
             yield return null;
         }
         circularBridge.transform.rotation = targetRotation;
+    }
+
+    IEnumerator LerpPosition1(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = cam.transform.position;
+        while (time < duration)
+        {
+            cam.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        cam.transform.position = targetPosition;
+    }
+
+    IEnumerator EnableControlsAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        pl2.EnableControls();
     }
 }
