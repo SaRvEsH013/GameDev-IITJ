@@ -43,7 +43,7 @@ public class PlaneController : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Airport_Cutscene")
         {
-            AudioSource.PlayClipAtPoint(airportBack, transform.position, 4f);
+            AudioSource.PlayClipAtPoint(airportBack, cam2.transform.position, 1f);
         }
     }
 

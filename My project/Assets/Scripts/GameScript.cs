@@ -60,6 +60,11 @@ public class GameScript : MonoBehaviour
 
         if (tempTime < 0.7)
         {
+            if((Input.GetKeyDown(KeyCode.LeftArrow) && left == 0) || (Input.GetKeyDown(KeyCode.RightArrow) && left == 1))
+            {
+                clicked = 1;
+            }
+            else
             if (Input.GetKeyDown(KeyCode.LeftArrow) && left == 1 && clicked == 0)
             {
                 score++;
