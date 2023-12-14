@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSwitcher : MonoBehaviour
@@ -9,6 +11,9 @@ public class CharacterSwitcher : MonoBehaviour
 
     private PlayerController p1Controller;
     private PlayerController p2Controller;
+
+    public Animator pa1;
+    public Animator pa2;
 
     void Start()
     {
@@ -30,6 +35,11 @@ public class CharacterSwitcher : MonoBehaviour
 
     void Update()
     {
+        //if both disabled, do nothing
+        if (!p1Controller.enabled && !p2Controller.enabled)
+        {
+            return;
+        }
         // If the 'K' key is pressed, switch between p1 and p2 controls.
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -48,13 +58,18 @@ public class CharacterSwitcher : MonoBehaviour
     {
         if (p1Controller.enabled)
         {
+            pa1.Rebind();
+            pa1.Update(0f);
             p1Controller.DisableControls();
             p2Controller.EnableControls();
         }
         else
         {
+            pa2.Rebind();
+            pa2.Update(0f);
             p1Controller.EnableControls();
             p2Controller.DisableControls();
         }
     }
+
 }
