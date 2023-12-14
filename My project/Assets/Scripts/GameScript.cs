@@ -26,10 +26,10 @@ public class GameScript : MonoBehaviour
         rightGreen.SetActive(false);
         leftRed.SetActive(false);
         rightRed.SetActive(false);
-        green_explosion_left.SetActive(false);
+ /*       green_explosion_left.SetActive(false);
         green_explosion_right.SetActive(false);
         red_explosion_left.SetActive(false);
-        red_explosion_right.SetActive(false);
+        red_explosion_right.SetActive(false);*/
         wonCanvas.SetActive(false);
         lostCanvas.SetActive(false);
 
@@ -79,10 +79,10 @@ public class GameScript : MonoBehaviour
             rightGreen.SetActive(false);
             leftRed.SetActive(false);
             rightRed.SetActive(false);
-            green_explosion_left.SetActive(false);
+/*            green_explosion_left.SetActive(false);
             green_explosion_right.SetActive(false);
             red_explosion_right.SetActive(false);
-            red_explosion_left.SetActive(false);
+            red_explosion_left.SetActive(false);*/
 
             if (tempTime < 1.05 || count >= maxScore) return;
 
@@ -94,12 +94,12 @@ public class GameScript : MonoBehaviour
                 if (green == 0)
                 {
                     leftRed.SetActive(true);
-                    red_explosion_left.SetActive(true);
+                    //red_explosion_left.SetActive(true);
                 }
                 else
                 {
                     rightGreen.SetActive(true);
-                    green_explosion_right.SetActive(true);
+                    //green_explosion_right.SetActive(true);
                 }
             }
             else
@@ -108,13 +108,13 @@ public class GameScript : MonoBehaviour
                 if (green == 0)
                 {
                     rightRed.SetActive(true);
-                    red_explosion_right.SetActive(true);
+                    //red_explosion_right.SetActive(true);
 
                 }
                 else
                 {
                     leftGreen.SetActive(true);
-                    green_explosion_left.SetActive(true);
+                    //green_explosion_left.SetActive(true);
 
                 }
             }

@@ -45,9 +45,9 @@ public class PlaneController : MonoBehaviour
         //enable camera and disable camera 2 
         //How to get time 
         
-        if ( transform.position.z <-9.3 && !SceneManager.GetSceneByName("Airport taking off").isLoaded)
+        if ( transform.position.z <-9.3 && !SceneManager.GetSceneByName("RedGreenTestScene").isLoaded && SceneManager.GetActiveScene().name  != "Airport taking off")
         {
-            SceneManager.LoadScene("Airport taking off");
+            SceneManager.LoadScene("RedGreenTestScene");
         }
 
 

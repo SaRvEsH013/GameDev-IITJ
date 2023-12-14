@@ -52,9 +52,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void OnContinueClick()
     {
-
-        // fly plane  and man enters volcano animation and load cube jump scene
-
+        SceneManager.LoadScene("Airport taking off");
     }
 
     public void onBackClick()

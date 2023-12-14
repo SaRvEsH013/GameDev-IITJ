@@ -16,7 +16,7 @@ public class CircularBridge : MonoBehaviour
         {
             done = true;
             StartCoroutine(LerpPosition(new Vector3(button2.transform.position.x, 6.513f - 0.1f, button2.transform.position.z), 5f));
-            StartCoroutine(LerpRotation(Quaternion.Euler(0, 0, 90), 5f));
+            StartCoroutine(LerpRotation(Quaternion.Euler(0, 0, -90), 5f));
         }
     }
 
