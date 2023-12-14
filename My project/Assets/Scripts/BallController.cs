@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
     private bool won;
     private bool lost;
         
+    public AudioClip mazeLost, mazeWon;
     void Start()
     {
     }
@@ -49,11 +50,13 @@ public class BallController : MonoBehaviour
             //this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             wonCan.SetActive(true);
             won = true;
+            AudioSource.PlayClipAtPoint(mazeWon, transform.position);
         }
         else if(!won)
         {
             lostCan.SetActive(true);
             lost = true;
+            AudioSource.PlayClipAtPoint(mazeLost, transform.position);
         }
         //else if(collision.gameObject.tag != "TargetCube")
         //{

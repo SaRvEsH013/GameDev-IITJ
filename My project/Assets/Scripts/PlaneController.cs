@@ -24,6 +24,8 @@ public class PlaneController : MonoBehaviour
     public Camera cam2;
     public Image fadeImage;
     public GameObject lostCan;
+
+    public AudioClip airportBack;
     private float responseModifier
     {
         get { return (rb.mass / 10f) * responsiveness; }
@@ -38,6 +40,10 @@ public class PlaneController : MonoBehaviour
         roll = 0f;
         yaw = 0f;
 
+        if(SceneManager.GetActiveScene().name == "Airport_Cutscene")
+        {
+            AudioSource.PlayClipAtPoint(airportBack, transform.position);
+        }
     }
 
     private void Update()

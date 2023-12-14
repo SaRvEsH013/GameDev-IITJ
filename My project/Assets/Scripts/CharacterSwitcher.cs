@@ -40,8 +40,8 @@ public class CharacterSwitcher : MonoBehaviour
         Vector3 targetPosition = p1Controller.enabled ? p1.transform.position : p2.transform.position;
 
         float distOfY = Mathf.Abs(p1.transform.position.y - p2.transform.position.y)/2;
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(targetPosition.x, (p1.transform.position.y + p2.transform.position.y) / 2f, p1.transform.position.z - distOfY - 1f), switchSpeed * Time.deltaTime);
-
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(targetPosition.x, (p1.transform.position.y + p2.transform.position.y+0.5f) / 2f, Mathf.Min(p1.transform.position.z - distOfY - 1f, p1.transform.position.z -  2.5f)), switchSpeed * Time.deltaTime);
+        
     }
 
     void SwitchCharacter()

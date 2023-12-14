@@ -13,10 +13,16 @@ public class ButtonsScript : MonoBehaviour
     public GameObject fadeCan;
     public Image fadeImage;
 
+    public AudioClip mazeStart;
+    public AudioClip lava;
+
     public GameObject ball;
     void Start()
     {
         StartCoroutine(Fade(true));
+
+        if(SceneManager.GetActiveScene().name == "Maze") AudioSource.PlayClipAtPoint(mazeStart, transform.position);
+        if(SceneManager.GetActiveScene().name == "Cube Jump") AudioSource.PlayClipAtPoint(lava, transform.position);
     }
 
 
