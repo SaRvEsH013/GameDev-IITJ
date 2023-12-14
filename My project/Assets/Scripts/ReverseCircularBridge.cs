@@ -11,6 +11,7 @@ public class ReverseCircularBridge : MonoBehaviour
     private bool done = false;
     public PlayerController pl1;
     public PlayerController pl2;
+    public Animator pla2;
 
     private void Update()
     {
@@ -24,6 +25,8 @@ public class ReverseCircularBridge : MonoBehaviour
             //disable controls for both players
             pl1.DisableControls();
             pl2.DisableControls();
+            pla2.Rebind();
+            pla2.Update(0f);
             //move camera to the center of the bridge
             StartCoroutine(LerpPosition1(new Vector3(circularBridge.transform.position.x, circularBridge.transform.position.y, circularBridge.transform.position.z - 6f), 0.5f));
             StartCoroutine(LerpPosition(new Vector3(button2.transform.position.x, 4.78f + 0.1f, button2.transform.position.z), 5f));
