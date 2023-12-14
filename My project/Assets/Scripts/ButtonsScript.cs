@@ -124,6 +124,21 @@ public class ButtonsScript : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void OnStartTempRunner()
+    {
+        introCan.SetActive(false);
+        //if Gamecan is not null then set it to active
+        if (GameCan != null)
+        {
+            GameCan.SetActive(true);
+        }
+    }
+
+    public void OnRestartTempRunner()
+    {
+        SceneManager.LoadScene("tempRunner");
+    }
     public void onResumeEsc()
     {
         Time.timeScale = 1f;
