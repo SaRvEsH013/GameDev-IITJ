@@ -39,7 +39,9 @@ public class CharacterSwitcher : MonoBehaviour
         // Update the camera's position to smoothly follow the selected character's position.
         Vector3 targetPosition = p1Controller.enabled ? p1.transform.position : p2.transform.position;
 
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(targetPosition.x, (p1.transform.position.y + p2.transform.position.y) / 2f, mainCamera.transform.position.z), switchSpeed * Time.deltaTime);
+        float distOfY = Mathf.Abs(p1.transform.position.y - p2.transform.position.y)/2;
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(targetPosition.x, (p1.transform.position.y + p2.transform.position.y) / 2f, p1.transform.position.z - distOfY - 1.5f), switchSpeed * Time.deltaTime);
+
     }
 
     void SwitchCharacter()
