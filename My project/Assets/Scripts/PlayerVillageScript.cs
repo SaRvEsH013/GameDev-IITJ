@@ -13,20 +13,20 @@ public class PlayerVillageScript : MonoBehaviour
     public int missionCount = 0;
     public GameObject plane;
     public Image fadeImage;
-    private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
-    private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
-    private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
+    //private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
+    //private bool ShouldJump => Input.GetKeyDown(jumpkey) && characterController.isGrounded;
+    //private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
 
-    [Header("Functional Options")]
+/*    [Header("Functional Options")]
     [SerializeField] private bool canSprint = true;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = false;
-    [SerializeField] private bool canUseHeadbob = true;
+    [SerializeField] private bool canUseHeadbob = true;*/
 
-    [Header("Controls")]
+/*    [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode jumpkey = KeyCode.Space;
-    [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;
+    [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;*/
 
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 3.0f;
@@ -39,20 +39,20 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField, Range(1, 180)] private float upperLookLimit = 80.0f;
     [SerializeField, Range(1, 180)] private float lowerLookLimit = 80.0f;
 
-    [Header("Jumping Parameters")]
+/*    [Header("Jumping Parameters")]
     [SerializeField] private float jumpForce = 15.0f;
-    [SerializeField] private float gravity = 30.0f;
+    [SerializeField] private float gravity = 30.0f;*/
 
-    [Header("Crouch Parameters")]
+/*    [Header("Crouch Parameters")]
     [SerializeField] private float crouchHeight = 0.5f;
     [SerializeField] private float standingHeight = 2f;
     [SerializeField] private float timeToCrouch = 0.25f;
     [SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0, 0);
     private bool isCrouching;
-    private bool duringCrouchAnimation;
+    private bool duringCrouchAnimation;*/
 
-    [Header("Headbob Parameters")]
+/*    [Header("Headbob Parameters")]
     [SerializeField] private float walkBobSpeed = 14f;
     [SerializeField] private float walkBobAmount = 0.05f;
     [SerializeField] private float sprintBobSpeed = 18f;
@@ -60,7 +60,7 @@ public class PlayerVillageScript : MonoBehaviour
     [SerializeField] private float crouchBobSpeed = 8f;
     [SerializeField] private float crouchBobAmount = 0.025f;
     private float defaultYPos = 0;
-    private float timer;
+    private float timer;*/
 
     //private Vector3 hitPointNormal;
     private Camera playerCamera;
@@ -70,8 +70,9 @@ public class PlayerVillageScript : MonoBehaviour
     private Vector2 currentInput;
 
     private float rotationX = 0;
+    private float rotationY = 0;
 
-    [Header("Footsteps objects")]
+/*    [Header("Footsteps objects")]
     AudioSource audioSource;
 
 
@@ -85,7 +86,7 @@ public class PlayerVillageScript : MonoBehaviour
 
     [Header("Etiqueta Piedra")]
     public AudioClip[] Pasospiedra;
-    //public Texture piedra;
+    //public Texture piedra;*/
 
     [Header("Intervalo de pasos")]
     public float TimeBetweenSteps;
@@ -103,14 +104,9 @@ public class PlayerVillageScript : MonoBehaviour
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
-        defaultYPos = transform.localPosition.y;
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        //audioSource = GetComponent<AudioSource>();
 
-        audioSource = GetComponent<AudioSource>();
-
-        // set missions to false
         for (int i = 0; i < missions.Length; i++)
         {
             missions[i] = false;
@@ -118,177 +114,50 @@ public class PlayerVillageScript : MonoBehaviour
 
     }
 
-    //Identifica la etiqueta para reproducir un sonido
-    /*private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        switch (hit.transform.tag)
-        {
-            case "Madera":
-                soundControl = 0;
-                break;
-            case "Pasto":
-                soundControl = 1;
-                break;
-            case "Piedra":
-                soundControl = 2;
-                break;
-        }
-    }*/
-
     //Los movimientos son identificados
     void Update()
     {
 
-        animator.SetBool("Jump", ShouldJump);
         animator.SetBool("Run", isMoving);
-        animator.SetBool("Sprint", isSpriting);
 
-        if (CanMove)
-        {
-            HandleMovementInput();
-            HandleMouseLook();
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
-
-            if (canJump)
-                HandleJump();
-
-            if (canUseHeadbob)
-                HandleHeadbob();
-
-            ApplyFinalMovements();
-
-        }
-        PlaySoundFalling();
-
-        //Condiciones para los sonidos de pasos(footsteps objects)
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        if (horizontal != 0 || vertical != 0 && characterController.isGrounded)
+        if (h != 0)
         {
             isMoving = true;
-            tiempo -= Time.deltaTime;
-            if (tiempo <= 0)
-            {
-                /*switch (soundControl)
-                {
-                    case 0: audioSource.clip = Pasosmadera[Random.Range(0, Pasosmadera.Length)]; break;
-                    case 1: audioSource.clip = Pasospasto[Random.Range(0, Pasospasto.Length)]; break;
-                    case 2: audioSource.clip = Pasospiedra[Random.Range(0, Pasospiedra.Length)]; break;
-                }*/
-                tiempo = TimeBetweenSteps;
-                /*audioSource.pitch = Random.Range(0.65f, 1f);
-                audioSource.volume = Random.Range(0.85f, 1f);
-                audioSource.Play();*/
-            }
+            transform.Translate(Vector3.right * h * walkSpeed * Time.deltaTime);
+
         }
-        else
+        if (v != 0)
+        {
+            isMoving = true;
+            transform.Translate(Vector3.forward * v * walkSpeed * Time.deltaTime);
+        }
+        if (h == 0 && v == 0)
         {
             isMoving = false;
-            tiempo = Time.deltaTime;
         }
 
-        if (IsSprinting)
-        {
-            isSpriting = true;
-            TimeBetweenSteps = 0.5f;
-        }
-        else
-        {
-            isSpriting = false;
-            TimeBetweenSteps = 1f;
-        }
+        rotationX = Input.GetAxis("Mouse X") * lookSpeedX;
+        transform.Rotate(0, rotationX, 0);
+/*
+        rotationY = Input.GetAxis("Mouse Y") * lookSpeedY;
+        rotationY = Mathf.Clamp(rotationY, -upperLookLimit, lowerLookLimit);
+        transform.Rotate(0, 0, -rotationY);*/
 
-        if (isCrouching)
+        // if no mouse input, stop rotating
+        if (Input.GetAxis("Mouse X") == 0)
         {
-            isAgachado = true;
-            TimeBetweenSteps = 1.5f;
+            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
-        else
+/*        if (Input.GetAxis("Mouse Y") == 0)
         {
-            isAgachado = false;
-        }
-
-        //Sonido del salto solo al entrar en contacto con el objeto
-        void PlaySoundFalling()
-        {
-            if (!characterController.isGrounded)
-            {
-                airTime += Time.deltaTime;
-            }
-            else
-            {
-                if (airTime > 0.2f)
-                {
-                    /* switch (soundControl)
-                     {
-                         case 0: audioSource.clip = Pasosmadera[Random.Range(0, Pasosmadera.Length)]; break;
-                         case 1: audioSource.clip = Pasospasto[Random.Range(0, Pasospasto.Length)]; break;
-                         case 2: audioSource.clip = Pasospiedra[Random.Range(0, Pasospiedra.Length)]; break;
-                     }*/
-                    tiempo = TimeBetweenSteps;
-                    /*audioSource.pitch = Random.Range(0.65f, 0.70f);
-                    audioSource.volume = Random.Range(0.65f, 0.75f);
-                    audioSource.Play();*/
-                    airTime = 0;
-                }
-            }
-
-        }
+            GetComponent<Rigidbody>().angularVelocity.x.Equals(0);
+        }*/
 
     }
-
-    //Se detecta los botones del teclado para ejecutar acciones
-    private void HandleMovementInput()
-    {
-
-        currentInput = new Vector2((IsSprinting ? sprintSpeed : isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Vertical"), (IsSprinting ? sprintSpeed : isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
-
-        float moveDirectionY = moveDirection.y;
-        moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
-        //moveDirection.y = moveDirectionY;
-
-    }
-
-    //Movimiento del Mouse
-    private void HandleMouseLook()
-    {
-        rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
-        rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
-
-    }
-
-    private void HandleJump()
-    {
-        if (ShouldJump)
-            moveDirection.y = jumpForce;
-    }
-
-    private void HandleHeadbob()
-    {
-        if (!characterController.isGrounded) return;
-
-        if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.z) > 0.1f)
-        {
-            timer += Time.deltaTime * (isCrouching ? crouchBobSpeed : IsSprinting ? sprintBobSpeed : walkBobSpeed);
-            playerCamera.transform.localPosition = new Vector3(
-                 playerCamera.transform.localPosition.x,
-                 defaultYPos + Mathf.Sin(timer) * (isCrouching ? crouchBobAmount : IsSprinting ? sprintBobAmount : walkBobAmount),
-                 playerCamera.transform.localPosition.z);
-        }
-    }
-
-    private void ApplyFinalMovements()
-    {
-
-        if (!characterController.isGrounded)
-            moveDirection.y -= gravity * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
-
-    }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter(Collision hit)
     {
         if (hit.gameObject.CompareTag("Begin"))
         {
@@ -326,7 +195,7 @@ public class PlayerVillageScript : MonoBehaviour
             if (SceneManager.GetSceneByName("Maze").isLoaded) return;
 
             StartCoroutine(Fade(false));
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; 
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             Invoke("LoadMazeScene", 1f);
         }
         if (hit.gameObject.tag == "FinalStart")
@@ -335,6 +204,8 @@ public class PlayerVillageScript : MonoBehaviour
             this.enabled = false;
         }
     }
+
+
 
     private void LoadOfficeScene()
     {
@@ -347,9 +218,9 @@ public class PlayerVillageScript : MonoBehaviour
 
     IEnumerator Fade(bool fadeAway)
     {
-        if(fadeAway)
+        if (fadeAway)
         {
-            for(float i = 1; i >= 0; i -= Time.deltaTime)
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
                 fadeImage.color = new Color(0, 0, 0, i);
                 yield return null;
@@ -357,13 +228,13 @@ public class PlayerVillageScript : MonoBehaviour
         }
         else
         {
-            for(float i = 0; i <= 1; i += Time.deltaTime)
+            for (float i = 0; i <= 1; i += Time.deltaTime)
             {
                 fadeImage.color = new Color(0, 0, 0, i);
                 yield return null;
             }
         }
     }
-    
+
 
 }

@@ -25,7 +25,7 @@ public class ButtonsPress : MonoBehaviour
         if(p1.transform.position.x >= button1.transform.position.x - 0.2f && p1.transform.position.x <= button1.transform.position.x + 0.2f && p1.transform.position.y <= button1.transform.position.y+0.35f)
         {
             //button1.transform.position = Vector3.Lerp(button1.transform.position, new Vector3(button1.transform.position.x, -0.72f, button1.transform.position.z), 2f * Time.deltaTime);
-            StartCoroutine(LerpPosition(new Vector3(button1.transform.position.x, -0.72f, button1.transform.position.z), 3f));
+            StartCoroutine(LerpPosition(new Vector3(button1.transform.position.x, button1.transform.position.y - 0.1f, button1.transform.position.z), 3f));
             done1 = true;
         }
 
@@ -33,7 +33,7 @@ public class ButtonsPress : MonoBehaviour
         if (p2.transform.position.x >= button2.transform.position.x - 0.2f && p2.transform.position.x <= button2.transform.position.x + 0.2f && p2.transform.position.y+0.35f >= button2.transform.position.y)
         {
             //button2.transform.position = Vector3.Lerp(button2.transform.position, new Vector3(button2.transform.position.x, 1.86f, button2.transform.position.z), 2f * Time.deltaTime); 
-            StartCoroutine(LerpPosition2(new Vector3(button2.transform.position.x, 1.88f, button2.transform.position.z), 3f));
+            StartCoroutine(LerpPosition2(new Vector3(button2.transform.position.x, button2.transform.position.y + 0.1f, button2.transform.position.z), 3f));
             done2 = true;
             //print("HUA");
         }
