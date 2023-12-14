@@ -20,6 +20,7 @@ TagManager:
   - Door
   - Begin
   - Direct
+  - VolcanoStart
   layers:
   - Default
   - TransparentFX
