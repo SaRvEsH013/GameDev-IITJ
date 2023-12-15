@@ -30,7 +30,7 @@ public class ButtonsScript : MonoBehaviour
 
     void Update()
     {
-        if ((introCan.gameObject == null ||introCan.gameObject.activeSelf == false) && (lossCan.gameObject == null  || lossCan.gameObject.activeSelf == false) && (winCan.gameObject == null || winCan.gameObject.activeSelf == false))
+        if ((introCan == null ||introCan.activeSelf == false) && (lossCan == null || lossCan.activeSelf == false) && (winCan == null || winCan.activeSelf == false))
         {
             Global_Script.global_time += Time.deltaTime;
         }
