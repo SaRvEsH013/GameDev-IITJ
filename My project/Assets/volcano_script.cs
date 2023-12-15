@@ -20,8 +20,8 @@ public class volcano_script : MonoBehaviour
         time = director.time;
         if (time > 2.1)
         {
-            print("ook");
-            SceneManager.LoadScene("tempRunner");
+            
+            SceneManager.LoadScene("Cube Jump");
         }
     }
 }

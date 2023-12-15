@@ -60,7 +60,7 @@ public class HighscoreTable : MonoBehaviour
         {
             CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
             cnt++;
-            if(cnt >= 10)
+            if(cnt >= 5)
             {
                 break;
             }
@@ -79,7 +79,7 @@ public class HighscoreTable : MonoBehaviour
 
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformlist)
     {
-        float templateHeight = 60f;
+        float templateHeight = 40f;
         Transform entryTransform = Instantiate(entryTemplate, container);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(8, -templateHeight * transformlist.Count);

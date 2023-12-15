@@ -125,7 +125,7 @@ public class PlayerVillageScript : MonoBehaviour
         //check if loaded scene is "Village"
         if (SceneManager.GetActiveScene().buildIndex == 0) AudioSource.PlayClipAtPoint(islandBack, transform.position);
         else AudioSource.PlayClipAtPoint(office, transform.position);
-
+        
     }
 
     //Los movimientos son identificados
