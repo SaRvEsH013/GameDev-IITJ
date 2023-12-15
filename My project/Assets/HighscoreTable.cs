@@ -4,7 +4,6 @@ using UnityEngine.UI;
 //using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
 using TMPro;
-using SimpleJSON;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class HighscoreTable : MonoBehaviour
