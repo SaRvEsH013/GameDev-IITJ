@@ -1056,6 +1056,7 @@ MonoBehaviour:
   lossCan: {fileID: 0}
   GameCan: {fileID: 665255102}
   fadeCan: {fileID: 0}
+  overlayM1: {fileID: 0}
   fadeImage: {fileID: 1572382209}
   mazeStart: {fileID: 0}
   lava: {fileID: 0}
@@ -2069,8 +2070,8 @@ MonoBehaviour:
     3.
     Achieve a minimum score of 6 out of 8 correct responses to advance for liftoff.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2203,8 +2204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: COLOUR VISION TEST
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
