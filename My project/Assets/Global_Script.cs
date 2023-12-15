@@ -23,11 +23,7 @@ public class Global_Script : MonoBehaviour
     {
         // set text as time in canvas
         this.gameObject.GetComponent<TMP_Text>().text = Math.Round(global_time).ToString();
-        
+
     }
-    public void ReadStringInput(string name)
-    {
-        input = name;
-        print(input);
-    }
+    
 }
