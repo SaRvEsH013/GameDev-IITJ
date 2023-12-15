@@ -9,29 +9,35 @@ public class ButtonsScript : MonoBehaviour
     public GameObject EscMenu;
     public GameObject eventMan;
     public GameObject introCan;
+    public GameObject winCan;
+    public GameObject lossCan;
     public GameObject GameCan;
     public GameObject fadeCan;
     public Image fadeImage;
 
     public AudioClip mazeStart;
     public AudioClip lava;
-    
+
     public GameObject ball;
     void Start()
     {
         StartCoroutine(Fade(true));
 
-        if(SceneManager.GetActiveScene().name == "Maze") AudioSource.PlayClipAtPoint(mazeStart, transform.position);
-        if(SceneManager.GetActiveScene().name == "Cube Jump") AudioSource.PlayClipAtPoint(lava, transform.position, 0.5f);
+        if (SceneManager.GetActiveScene().name == "Maze") AudioSource.PlayClipAtPoint(mazeStart, transform.position);
+        if (SceneManager.GetActiveScene().name == "Cube Jump") AudioSource.PlayClipAtPoint(lava, transform.position, 0.5f);
     }
 
 
     void Update()
     {
-        Global_Script.global_time += Time.time/1000;
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if ((introCan.gameObject == null ||introCan.gameObject.activeSelf == false) && (lossCan.gameObject == null  || lossCan.gameObject.activeSelf == false) && (winCan.gameObject == null || winCan.gameObject.activeSelf == false))
         {
-            if(EscMenu.activeSelf == false)
+            Global_Script.global_time += Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (EscMenu.activeSelf == false)
             {
                 Time.timeScale = 0f;
                 EscMenu.SetActive(true);
@@ -98,7 +104,7 @@ public class ButtonsScript : MonoBehaviour
     public void onBackMaze()
     {
         StartCoroutine(Fade(false));
-        Invoke("LoadOffice", 1f); 
+        Invoke("LoadOffice", 1f);
     }
 
     void LoadOffice()
