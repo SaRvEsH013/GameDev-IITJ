@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private string nameOfPlayer;
     private bool leftSided = false;
     public GameObject lostCanvas;
+    //public GameObject wonCanvas;
 
     void Start()
     {
@@ -212,11 +213,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("lostGame"))
         {
-            //print("lost game");
+            print("lost game");
             //disable controls
             DisableControls();
             //show lost canvas
             lostCanvas.SetActive(true);
+        }
+        else if (other.gameObject.CompareTag("wonGame") && !lostCanvas.activeSelf)
+        {
+            //print("won game");
+            //disable controls
+            DisableControls();
+            //show won canvas
+            /*wonCanvas.SetActive(true);*/
         }
     }
 }
