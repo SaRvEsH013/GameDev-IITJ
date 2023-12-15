@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/game_starting.unity
+    guid: ac81f2b3e3ee13e4c8628714cf1f2ac0
+  - enabled: 1
+    path: Assets/Scenes/starting_video.unity
+    guid: e22be0c58fae09d44ae3cb40c367fc57
+  - enabled: 1
     path: Assets/Scenes/03 - Islands.unity
     guid: 266d18a39c556cd4c8f810a63e9df0db
   - enabled: 1
