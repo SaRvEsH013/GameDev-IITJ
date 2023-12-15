@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
-
-public class volcano_script : MonoBehaviour
+public class change_scene_to_after_vol : MonoBehaviour
 {
-    public PlayableDirector director;
-    private double time; 
+    private double time = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +14,10 @@ public class volcano_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = director.time;
-        if (time > 2.1)
+        time += Time.deltaTime;
+        if(time > 23)
         {
-            
-            SceneManager.LoadScene("Cube Jump");
+            SceneManager.LoadScene("tempRunner");
         }
     }
 }

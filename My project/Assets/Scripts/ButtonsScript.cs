@@ -80,7 +80,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void onContinueCubeJump()
     {
-        SceneManager.LoadScene("tempRunner");
+        SceneManager.LoadScene("Volcano_after_cutscene");
     }
 
     public void onBackCubeJump()
