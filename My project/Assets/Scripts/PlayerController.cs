@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private string nameOfPlayer;
     private bool leftSided = false;
     public GameObject lostCanvas;
-    //public GameObject wonCanvas;
+    public GameObject wonCanvas;
 
     void Start()
     {
@@ -221,11 +222,17 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("wonGame") && !lostCanvas.activeSelf)
         {
-            //print("won game");
-            //disable controls
             DisableControls();
-            //show won canvas
-            /*wonCanvas.SetActive(true);*/
+            wonCanvas.SetActive(true);
+            //wait for 2 seconds and load next scene
+            StartCoroutine(LoadNextScene());
         }
+    }
+
+    IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(2f);
+        //load scene GameOver
+        SceneManager.LoadScene("GameOver");
     }
 }
