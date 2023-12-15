@@ -226,6 +226,9 @@ public class PlayerController : MonoBehaviour
             wonCanvas.SetActive(true);
             //wait for 2 seconds and load next scene
             StartCoroutine(LoadNextScene());
+            //float to int
+            int time = (int)Global_Script.global_time;
+            HighscoreTable.AddHighscoreEntry(time, Global_Script.playerName);
         }
     }
 
