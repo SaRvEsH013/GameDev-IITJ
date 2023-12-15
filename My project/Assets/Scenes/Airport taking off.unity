@@ -27994,7 +27994,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &712109248
 RectTransform:
@@ -30701,7 +30701,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &773872872
 RectTransform:
@@ -69127,6 +69127,7 @@ MonoBehaviour:
   lossCan: {fileID: 0}
   GameCan: {fileID: 0}
   fadeCan: {fileID: 0}
+  overlayM1: {fileID: 0}
   fadeImage: {fileID: 1022745956}
   mazeStart: {fileID: 0}
   lava: {fileID: 0}
@@ -80017,7 +80018,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1772457037}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
-        m_MethodName: onBackATO
+        m_MethodName: onBackEsc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
