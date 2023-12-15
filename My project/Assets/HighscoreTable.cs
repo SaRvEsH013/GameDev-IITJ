@@ -32,7 +32,7 @@ public class HighscoreTable : MonoBehaviour
         //if highscoreTable does not exist, create it
         if (!PlayerPrefs.HasKey("highscoreTable"))
         {
-            HighscoreEntry highscoreEntry = new HighscoreEntry { score = 9999999, name = "Play to get timing" };
+            HighscoreEntry highscoreEntry = new HighscoreEntry { score = 999999999, name = "Play to get timing" };
             List<HighscoreEntry> highscoreEntries = new List<HighscoreEntry>() { highscoreEntry };
             Highscores initial = new Highscores { highscoreEntryList = highscoreEntries };
 
@@ -60,15 +60,17 @@ public class HighscoreTable : MonoBehaviour
         }
         int cnt = 0;
 
+
+        print(highscores.highscoreEntryList.Count);
         highscoreEntryTransformList = new List<Transform>();
         foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList)
         {
-            CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
             cnt++;
-            if(cnt >= 5)
+            if(cnt >= 6 || cnt>=highscores.highscoreEntryList.Count-1)
             {
                 break;
             }
+            CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
 
         /*Highscores highscores = new Highscores { highscoreEntryList = highscoreEntrylList };
