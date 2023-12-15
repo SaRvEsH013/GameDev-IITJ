@@ -236,6 +236,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         //load scene GameOver
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("game_starting");
     }
 }
