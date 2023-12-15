@@ -234,8 +234,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         //load scene GameOver
-        SceneManager.LoadScene("game_starting");
+        SceneManager.LoadScene("GameOver");
     }
 }
