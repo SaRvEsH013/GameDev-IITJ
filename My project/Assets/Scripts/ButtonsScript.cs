@@ -13,6 +13,7 @@ public class ButtonsScript : MonoBehaviour
     public GameObject lossCan;
     public GameObject GameCan;
     public GameObject fadeCan;
+    public GameObject overlayM1;
     public Image fadeImage;
 
     public AudioClip mazeStart;
@@ -139,6 +140,8 @@ public class ButtonsScript : MonoBehaviour
         {
             GameCan.SetActive(true);
         }
+
+        overlayM1.SetActive(true);
     }
 
     public void OnRestartTempRunner()

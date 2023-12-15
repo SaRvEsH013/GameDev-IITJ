@@ -12,8 +12,13 @@ public class CharacterSwitcher : MonoBehaviour
     private PlayerController p1Controller;
     private PlayerController p2Controller;
 
+    public GameObject p1Canvas;
+    public GameObject p2Canvas;
+
     public Animator pa1;
     public Animator pa2;
+
+    public GameObject introScene;
 
     void Start()
     {
@@ -31,13 +36,22 @@ public class CharacterSwitcher : MonoBehaviour
         // Enable controls for p1 and disable controls for p2 at the start.
         p1Controller.EnableControls();
         p2Controller.DisableControls();
+        //p1Canvas.SetActive(true);
+        //p2Canvas.SetActive(false);
     }
 
     void Update()
     {
+        /*if(introScene.activeSelf)
+        {
+            p1Canvas.SetActive(false);
+            p2Canvas.SetActive(false);
+        }*/
         //if both disabled, do nothing
         if (!p1Controller.enabled && !p2Controller.enabled)
         {
+            p1Canvas.SetActive(false);
+            p2Canvas.SetActive(false);
             return;
         }
         // If the 'K' key is pressed, switch between p1 and p2 controls.
@@ -58,10 +72,14 @@ public class CharacterSwitcher : MonoBehaviour
     {
         if (!p1Controller.enabled && !p2Controller.enabled)
         {
+            p1Canvas.SetActive(false);
+            p2Canvas.SetActive(false);
             return;
         }
         if (p1Controller.enabled)
         {
+            p1Canvas.SetActive(false);
+            p2Canvas.SetActive(true);
             pa1.Rebind();
             pa1.Update(0f);
             p1Controller.DisableControls();
@@ -69,6 +87,8 @@ public class CharacterSwitcher : MonoBehaviour
         }
         else
         {
+            p1Canvas.SetActive(true);
+            p2Canvas.SetActive(false);
             pa2.Rebind();
             pa2.Update(0f);
             p1Controller.EnableControls();
