@@ -113,7 +113,7 @@ public class ButtonsScript : MonoBehaviour
     }
     void LoadPlaneAnimation()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Airport_Cutscene");
     }
 
     public void onBackATO()

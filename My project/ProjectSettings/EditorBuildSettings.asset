@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/starting_video.unity
     guid: e22be0c58fae09d44ae3cb40c367fc57
   - enabled: 1
+    path: Assets/Scenes/Volcano_after_cutscene.unity
+    guid: 647ddeb0d4ba8404ba4c25b83d61fc42
+  - enabled: 1
     path: Assets/Scenes/03 - Islands.unity
     guid: 266d18a39c556cd4c8f810a63e9df0db
   - enabled: 1
