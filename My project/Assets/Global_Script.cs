@@ -10,7 +10,7 @@ public class Global_Script : MonoBehaviour
 {
     public static float global_time = 0f;
     public static string playerName = "";
-
+    private string input;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class Global_Script : MonoBehaviour
     {
         // set text as time in canvas
         this.gameObject.GetComponent<TMP_Text>().text = Math.Round(global_time).ToString();
-        
+
     }
+    
 }
