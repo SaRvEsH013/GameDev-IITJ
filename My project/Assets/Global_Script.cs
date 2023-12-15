@@ -9,7 +9,7 @@ using System;
 public class Global_Script : MonoBehaviour
 {
     public static float global_time = 0f;
-    public static string playerName = "";
+    public static string playerName = "yyyy";
     private string input;
 
     // Start is called before the first frame update

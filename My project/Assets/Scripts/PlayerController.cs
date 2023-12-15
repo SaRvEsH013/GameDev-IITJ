@@ -228,6 +228,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LoadNextScene());
             //float to int
             int time = (int)Global_Script.global_time;
+            print(time);
+            print(Global_Script.playerName);
             HighscoreTable.AddHighscoreEntry(time, Global_Script.playerName);
         }
     }
