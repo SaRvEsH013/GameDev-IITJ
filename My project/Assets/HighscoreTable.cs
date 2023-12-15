@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 using SimpleJSON;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class HighscoreTable : MonoBehaviour
 {
@@ -31,7 +32,11 @@ public class HighscoreTable : MonoBehaviour
         //if highscoreTable does not exist, create it
         if (!PlayerPrefs.HasKey("highscoreTable"))
         {
-            string json = "";
+            HighscoreEntry highscoreEntry = new HighscoreEntry { score = 9999999, name = "Play to get timing" };
+            List<HighscoreEntry> highscoreEntries = new List<HighscoreEntry>() { highscoreEntry };
+            Highscores initial = new Highscores { highscoreEntryList = highscoreEntries };
+
+            string json = JsonUtility.ToJson(initial);
             PlayerPrefs.SetString("highscoreTable", json);
             PlayerPrefs.Save();
         }
