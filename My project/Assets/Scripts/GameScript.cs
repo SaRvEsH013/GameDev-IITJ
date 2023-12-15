@@ -18,6 +18,7 @@ public class GameScript : MonoBehaviour
     int clicked = 0;
     int count = 0;
     public AudioClip audioClip;
+    public AudioClip greenAud;
 
     void Start()
     {
@@ -123,7 +124,10 @@ public class GameScript : MonoBehaviour
 
                 }
             }
-            if(count < maxScore) PlayAudio();
+            if(count < maxScore)
+            {
+                if(green == 0) PlayAudio();
+                else AudioSource.PlayClipAtPoint(greenAud, transform.position);
             tempTime = 0;
             clicked = 0;
             count++;
