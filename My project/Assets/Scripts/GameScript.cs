@@ -123,7 +123,7 @@ public class GameScript : MonoBehaviour
 
                 }
             }
-            PlayAudio();
+            if(count < maxScore) PlayAudio();
             tempTime = 0;
             clicked = 0;
             count++;
