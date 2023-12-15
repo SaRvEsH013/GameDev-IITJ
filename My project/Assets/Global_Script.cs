@@ -22,7 +22,7 @@ public class Global_Script : MonoBehaviour
     void Update()
     {
         // set text as time in canvas
-        this.gameObject.GetComponent<TMP_Text>().text = Math.Round(global_time).ToString();
+        this.gameObject.GetComponent<TMP_Text>().text = "TIMER: "+ Math.Round(global_time).ToString();
 
     }
     
