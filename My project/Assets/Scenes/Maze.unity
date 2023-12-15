@@ -4638,6 +4638,8 @@ MonoBehaviour:
   EscMenu: {fileID: 1620852834}
   eventMan: {fileID: 592782807}
   introCan: {fileID: 1143132455}
+  winCan: {fileID: 1985022093}
+  lossCan: {fileID: 738700725}
   GameCan: {fileID: 1895491377}
   fadeCan: {fileID: 0}
   fadeImage: {fileID: 1715103819}
