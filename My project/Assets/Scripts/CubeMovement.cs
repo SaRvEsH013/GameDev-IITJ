@@ -19,7 +19,8 @@ public class CubeController : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+
+        if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
         {
             hasStarted = true;
             introScreen.SetActive(false);
@@ -27,17 +28,22 @@ public class CubeController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            
+            animator.SetBool("jump", true);
+            
             //check if intro screen is active
             if (!introScreen.activeSelf && !lostScreen.activeSelf && !wonScreen.activeSelf)
             {
                 cube.GetComponent<Rigidbody>().AddForce(0, moveSpeed, -1f*moveSpeed);
-                animator.SetBool("jump", true);
                 AudioSource.PlayClipAtPoint(jump, camera.transform.position);
                 isGrounded = false;
             }
             
         }
-        animator.SetBool("jump", false);
+        else
+        {
+            animator.SetBool("jump", false);
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
