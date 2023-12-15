@@ -11,6 +11,7 @@ public class input_name : MonoBehaviour
     public void SaveName(string newName)
     {
         name1 = newName;
+        Global_Script.playerName = name1;
         Debug.Log(name1);
     }
 
